@@ -43,7 +43,7 @@
 				if (opts.flagDisabled) addDisabledClass();
 				bindHandlers();
 
-				if (!opts.includeAll) $list.show(); // show the list in case the recommendation for includeAll=false was taken
+				//if (!opts.includeAll) $list.show(); // show the list in case the recommendation for includeAll=false was taken
 
 				// remove nav items we don't need
 				//
