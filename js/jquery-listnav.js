@@ -33,7 +33,8 @@
             var $wrapper, list, $letters, $letterCount, id = this.id,
                 $list = $(this);
             if (!$('#' + id + '-nav').length) {
-                $('<div id="' + id + '-nav"/>').insertBefore($list);
+                // TODO: depreceate the need to add the html part of this yourself, and just do it programatically.
+                $('<div id="' + id + '-nav" class="listNav"/>').insertBefore($list);
             }
             $wrapper = $('#' + id + '-nav'); // user must abide by the convention: <ul id="myList"> for list and <div id="myList-nav"> for nav wrapper
             var counts = {},
@@ -102,9 +103,7 @@
             //
             function setLetterCountTop() {
                 $letterCount.css({
-                    top: $('.a', $letters).slice(0, 1).position().top - $('.ln-letter-count').outerHeight({
-                        margin: true
-                    })
+                    top: $('.a', $letters).slice(0, 1).position().top - ($wrapper.outerHeight(false)-5 ) //outerHeight changed, its now JUST true to include outside margins. also changed it to calculate the positionof the $wrapper element rather than the letter count element.
                 }); // note: don't set top based on '.all': it might not be visible
             }
  
@@ -185,9 +184,7 @@
                 if (opts.showCounts) {
                     $('.ln-letters a').mouseover(function () {
                         var left = $(this).position().left;
-                        var width = ($(this).outerWidth({
-                            margin: true
-                        }) - 1) + 'px'; // the -1 is to tweak the width a bit due to a seeming inaccuracy in jquery ui/dimensions outerWidth (same result in FF2 and IE6/7)
+                        var width = ($(this).outerWidth(true) - 1) + 'px'; // the -1 is to tweak the width a bit due to a seeming inaccuracy in jquery ui/dimensions outerWidth (same result in FF2 and IE6/7)
                         var count = getLetterCount(this);
                         $letterCount.css({
                             left: left,
