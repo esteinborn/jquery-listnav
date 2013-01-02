@@ -1,0 +1,36 @@
+/* demo-specific
+----------------------------------------------------------------- */
+
+#demoThree-nav .ln-letters a { border:none; border-top:2px solid pink; color:red; }
+#demoThree-nav .ln-letters a.ln-last { border-right:none; }
+#demoThree-nav .ln-letters a:hover,
+#demoThree-nav .ln-letters a.ln-selected { border-top:2px solid red; background-color:pink; color:White !important; }
+#demoThree-nav .ln-letters a.ln-disabled { color:pink; }
+#demoThree-nav .ln-letters a.ln-disabled:hover { color:white; }
+#demoThree-nav .ln-letter-count { color:red; }
+
+#demoThree li { color:pink; }
+#demoThree li a { color:red; text-decoration:none; }
+#demoThree li a:hover { text-decoration:underline;}
+
+#demoFour, .listWrapper { width:650px; overflow:hidden; }
+#demoFour li { float:left; list-style: none; }
+#demoFour a { display:block; text-align:center; width:85px; border:1px solid silver; padding:10px; margin:0 10px 10px 0; text-decoration:none }
+#demoFour a:hover { background-color:#eee; color:pink;}
+
+.imageList {width:550px;}
+.person-details, .person-image {float:left;}
+.person-image {width: 140px; padding-right: 20px; margin-top:25px;}
+.person-details {width: 330px;}
+.person-image {text-align: right;}
+.person-details .field {font-size: 16px; line-height: 24px;}
+.imageList-li {list-style-type: none;}
+.imageList-li article {-webkit-border-radius: 4px; border-radius: 4px; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;}
+.imageList-li header {float:right; width:365px;}
+.imageList-li h2 {background:none; padding-bottom:0;}
+.imageList-li a {text-decoration: none; color: #039;}
+.imageList-li article:hover {background-color:#eff1f9; cursor: pointer;  -webkit-box-shadow: 0px 0px 2px 0px #bababa; box-shadow: 0px 0px 5px 0px #BBB;}
+.field-label-inline .field-label, .field-label-inline .field-items {float: left;}
+.field .field-label {font-weight: bold;}
+.last-name {display:none;}
+.clearfix::after { content: ".";display: block;height: 0;clear: both;visibility: hidden;}
