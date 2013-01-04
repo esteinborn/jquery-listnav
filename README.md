@@ -8,13 +8,13 @@ But also realized that I needed to make it even more forward compatible, so it s
 
 Simple usage:
 Document Head:
-<code><link rel="stylesheet" href="listnav.css"></code>
+<code>&lt;link rel="stylesheet" href="listnav.css"&gt;</code>
 
 Document Body:
-<code><ul id="myList">...</ul></code>
+<code>&lt;ul id="myList"&gt;...&lt;/ul&gt;</code>
 
 Before Ending Body tag:
-<code><script src="jquery-listnav-2.2.min.js"></script>
-<script>
+<code>&lt;script src="jquery-listnav-2.2.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
 	$("#myList").listnav();
-</script></code>
+&lt;/script&gt;</code>
