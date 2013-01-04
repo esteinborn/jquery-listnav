@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset='utf-8'>
-	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<meta name="description" content="jQuery ListNav Plugin : A jQuery plugin that lets you sort your list items alphabetically and hides the other letters.">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="jQuery ListNav Plugin : A jQuery plugin that creates an alphabetical navigation filter for your lists">
 	<title>jQuery ListNav Plugin Demo</title>
 	<link rel="stylesheet" href="stylesheets/stylesheet.css">
 </head>
@@ -12,7 +15,7 @@
 <div id="header_wrap" class="outer">
 	<header class="inner">
 		<h1 id="project_title">jQuery ListNav Plugin</h1>
-		<h2 id="project_tagline">Navigate your lists, and hide what you dont need!</h2>
+		<h2 id="project_tagline">Create a world of alphabetical navigation filters one list at a time!</h2>
 		<section id="downloads"><a class="zip_download_link" href="https://github.com/esteinborn/jquery-listnav/zipball/master">Download this project as a .zip file</a> <a class="tar_download_link" href="https://github.com/esteinborn/jquery-listnav/tarball/master">Download this project as a tar.gz file</a></section>
 	</header>
 </div>
@@ -29,9 +32,9 @@
 			<li><a href="#tabpage_7">Demo 7</a></li>
 		</ul>
 		<div id="tabpage_1" class="tabContainer">
-			<h3>Use defaults and an ID selector</h3>
-			<p>This is the easiest way to use the plugin. None of the default options are overridden and a jQuery ID selector is used to bind the plugin to a single list.</p>
+			<h3>The default configuration</h3>
 			<pre><code data-language="javascript">$('#demoOne').listnav();</code></pre>
+			<p>This is the easiest way to use the plugin. None of the default options are overridden and a jQuery ID selector is used to bind the plugin to a single list.</p>
 			<ul id="demoOne" class="demo">
 				<li><a href="#">411 Services</a></li>
 				<li><a href="accountants.aspx">Accountants</a></li>
@@ -208,12 +211,12 @@
 			</ul>
 		</div>
 		<div id="tabpage_2" class="tabContainer">
-			<h3>Overriding some defaults and binding to multiple lists</h3>
-			<p>A jQuery class selector is used to bind to two lists. The 'includeAll' default option is overridden, which causes the ALL link to be hidden and the first letter with matches to get pre-selected. The 'noMatchText' default is overridden, providing a custom message for letters with no matching results.</p>
+			<h3>Override defaults and binding to multiple lists</h3>
 			<pre><code data-language="javascript">$('.demoTwo').listnav({
     includeAll: false, 
     noMatchText: 'There are no matching entries.'
 });</code></pre>
+			<p>A jQuery class selector is used to bind to two lists. The <code>includeAll</code> default option is overridden, which causes the <strong>ALL</strong> link to be hidden and the first letter with matches to get pre-selected. The <code>noMatchText</code> default is overridden, providing a custom message for letters with no matching results.</p>
 			<ul id="listTwo" class="demoTwo demo">
 				<li><a href="accountants.aspx">Accountants</a></li>
 				<li><a href="accounting-bookkeeping_general-service.aspx">Accounting &amp; Bookkeeping - General Service</a></li>
@@ -345,11 +348,11 @@
 			</ul>
 		</div>
 		<div id="tabpage_3" class="tabContainer">
-			<h3>Using an OL, setting the initLetter and different CSS styling</h3>
-			<p>The 'initLetter' option is set to letter 'c', which forces the list to load with that letter selected. The list is an OL (ordered list) and the numbers restart at 1 under each letter. The default styling is overridden to give the navigation and list a different look.</p>
+			<h3>Using an OL, setting an <code>initLetter</code> and customizing the CSS</h3>
 			<pre><code data-language="javascript">$('#demoThree').listnav({
     initLetter: 'c'
 });</code></pre>
+			<p>The <code>initLetter</code> option is set to letter 'c', which forces the list to load with that letter selected. The list is an OL (ordered list) and the numbers restart at 1 under each letter. The default styling is overridden to give the navigation and list a different look.</p>
 			<ol id="demoThree" class="indented demo">
 				<li><a href="#">411 Services</a></li>
 				<li><a href="accountants.aspx">Accountants</a></li>
@@ -426,11 +429,11 @@
 			</ol>
 		</div>
 		<div id="tabpage_4" class="tabContainer">
-			<h3>It doesn't even need to resemble a list!</h3>
-			<p>Anchor (A) tags in the list items are styled to look like boxes and the LI's are floated left so that they will dynamically wrap from left to right and down. The 0-9 number navigation item is hidden by the includeNums:false option.</p>
+			<h3>Style your lists however you want!</h3>
 			<pre><code data-language="javascript">$('#demoFour').listnav({
     includeNums: false
 });</code></pre>
+			<p>Anchor (A) tags in the list items are styled to look like boxes and the LI's are floated left so that they will dynamically wrap from left to right and down. The 0-9 number navigation item is hidden by the <code>includeNums:false</code> option.</p>
 			<div class="listWrapper">
 				<ul id="demoFour" class="demo">
 					<li><a href="#">Agizzy</a></li>
@@ -489,14 +492,14 @@
 			</div>
 		</div>
 		<div id="tabpage_5" class="tabContainer">
-			<h3>Using cookies to save last click and utilizing an onClick callback</h3>
-			<p>If you include the <a href="https://github.com/carhartl/jquery-cookie">jquery.cookie</a> js file in your page before the listnav js file, you can set the 'cookieName' option to have the listnav control remember your user's last clicked navigation item (the cookie value will be 'all', '_' for numbers 0-9 or a lowercase letter 'a' - 'z'). You can also use the 'onClick' callback to fire a custom function when a letter gets clicked. Click a letter to see the onClick function, then reload the page and come back to Demo 5 and you'll see that the list loads your last clicked letter (obtained from the cookie value).</p>
+			<h3>Using <code>cookieName</code> to save last click and utilizing an <code>onClick</code> callback</h3>
 			<pre><code data-language="javascript">$('#demoFive').listnav({
     cookieName: 'ln-demo5',
     onClick: function(letter) {
         $(".myLastClicked").text(letter.toUpperCase());
     }
 });</code></pre>
+			<p>If you include the <a href="https://github.com/carhartl/jquery-cookie">jquery.cookie</a> js file in your page before the listnav js file, you can set the <code>cookieName</code> option to have the listnav control remember your user's last clicked navigation item (the cookie value will be 'all', '_' for numbers 0-9 or a lowercase letter 'a' - 'z'). You can also use the <code>onClick</code> callback to fire a custom function when a letter gets clicked. Click a letter to see the onClick function, then reload the page and come back to Demo 5 and you'll see that the list loads your last clicked letter (obtained from the cookie value).</p>
 <p>You Just Clicked: <span class="myLastClicked" style="font-size:1.5em; color:#FE51A1">?</span></p>
 			<ul id="demoFive" class="demo">
 				<li><a href="#">411 Services</a></li>
@@ -574,12 +577,13 @@
 			</ul>
 		</div>
 		<div id="tabpage_6" class="tabContainer">
-			<h3>Using the includeOther and prefixes options</h3>
-			<p>Use the includeOther option to show a [...] navigation item for access to list items that start with something other than A-Z and 0-9 (such as Ä and Ü). If you'd like something like "The Valley News" or "The Willows Journal" to appear under V and W as well as under T, supply an array of prefixes using the prefixes option. Note: when using prefixes the ALL count will only include each item once.</p>
+			<h3>Using the <code>includeOther</code> and <code>prefixes</code> options</h3>
 			<pre><code data-language="javascript">$('#demoSix').listnav({
     includeOther: true,
     prefixes: ['the','a']
 });</code></pre>
+			<p>Use the <code>includeOther</code> option to show a [...] navigation item for access to list items that start with something other than A-Z and 0-9 (such as Ä and Ü). If you'd like something like "The Valley News" or "The Willows Journal" to appear under V and W as well as under T, supply an array of prefixes using the <code>prefixes</code> option.</p>
+			<p><strong>Note:</strong> <code>prefixes</code> will not iterate the "ALL" count twice.</p>
 			<ul id="demoSix" class="demo">
 				<li><a href="#">Äpfel</a></li>
 				<li><a href="#">Über alle</a></li>
@@ -851,371 +855,81 @@
 			</ul>
 		</div>
 		<div id="tabpage_7" class="tabContainer">
-			<h3>Specifying a sortElement and removeDisabled List Items</h3>
-			<p>Sometimes we dont have full control over how our lists are populated. Below there is a list of Star Trek's Main Cast, and your CMS always lists the first name first, but you want to sort by last name. New in 2.2, you can specify a css selector for the <code>sortElement</code> option and your list will sort using that selector! You may also want to remove the letters that aren't in the list. set the <code>removeDisabled</code> option to true and it will delete them from the page.</p>
-			<p>In this demo, each LI contains a hidden div with a css class of <code>last-name</code>. We set the <code>sortElement</code> option to <code>'.last-name'</code> and that is what the list navigation will use to filter the list</p>
-			<p>NOTE: <code>sortElement</code> will accept any valid CSS selector to sort by.</p>
+			<h3>Specify a <code>filterSelector</code> and removing links with <code>removeDisabled</code></h3>
 			<pre><code data-language="javascript">$('#demoSeven').listnav({
-    sortElement: '.last-name',
+    filterSelector: '.last-name',
     includeNums: false,
     removeDisabled: true
 });</code></pre>
-
+			<p>Below you'll find a list of the Star Trek TNG Cast "generated" by a CMS. While you wanted to filter by last name it generated the first name fields first...</p>
+			<p><strong>New in 2.2</strong>, using <code>filterSelector</code> you can specify a css selector for your navigation to filter by! You can also remove letters that have no content by setting <code>removeDisabled: true</code></p>
+			<p>In this demo, each LI contains a hidden div with <code>class="last-name"</code>
+				<br>So setting <code>filterSelector: '.last-name'</code> lets us filter the list using that CSS selector.</p>
+			<p><strong>NOTE:</strong> <code>filterSelector</code> will accept any valid CSS selector.</p>
 			<ul id="demoSeven" class="demo imageList">
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Beverly Crusher</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Crusher</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/crusher.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Commander</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Oct. 13, 2324</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Copernicus City, Luna</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/crusher.png" width="120" height="90">
+					<h2><a href="#">Beverly Crusher</a></h2>
+					<p class="last-name">Crusher</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>Oct. 13, 2324<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Copernicus City, Luna<span></p>
 				</li>
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Wesley Crusher</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Crusher</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/crusher-w.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Ensign</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">July 29, 2349</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Earth</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/crusher-w.png" width="120" height="90">
+					<h2><a href="#">Wesley Crusher</a></h2>
+					<p class="last-name">Crusher</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Ensign<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>July 29, 2349<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Earth<span></p>
 				</li>
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Data</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Data</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/data.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Lieutenant Commander</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Feb. 2, 2338</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Omicron Theta science colony</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/data.png" width="120" height="90">
+					<h2><a href="#">Data</a></h2>
+					<p class="last-name">Data</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Lieutenant Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>Feb. 2, 2338<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Omicron Theta science colony<span></p>
 				</li>
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Geordi La Forge</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">La Forge</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/geordi.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Commander</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Feb. 16, 2335</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">African Confederation, Earth</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/geordi.png" width="120" height="90">
+					<h2><a href="#">Geordi La Forge</a></h2>
+					<p class="last-name">La Forge</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>Feb. 16, 2335<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>African Confederation, Earth<span></p>
 				</li>
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Jean Luc Picard</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Picard</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/picard.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Captain</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">July 13, 2305</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Labarre, France, Earth</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/picard.png" width="120" height="90">
+					<h2><a href="#">Jean Luc Picard</a></h2>
+					<p class="last-name">Picard</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Captain<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>July 13, 2305<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Labarre, France, Earth<span></p>
 				</li>
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">William Riker</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Riker</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/riker.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Captain</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">August 19, 2335</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Valdez, Alaska, Earth</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/riker.png" width="120" height="90">
+					<h2><a href="#">William Riker</a></h2>
+					<p class="last-name">Riker</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Captain<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>August 19, 2335<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Valdez, Alaska, Earth<span></p>
 				</li>
-				
-				
-				
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Deanna Troi</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Troi</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/troi.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Commander</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Terran equivalent: March 29, 2336</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Near Lake El-Nar, Betazed</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/troi.png" width="120" height="90">
+					<h2><a href="#">Deanna Troi</a></h2>
+					<p class="last-name">Troi</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>March 29, 2336 (Terran equivalent)<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Near Lake El-Nar, Betazed<span></p>
 				</li>
-				<li class="views-row views-row-1 views-row-odd views-row-first imageList-li">
-					<article class="node-252 node node-imageList node-teaser contextual-links-region node-by-viewer clearfix" about="/drupal/missing-child/nancy-acevedo" typeof="sioc:Item foaf:Document">
-						<header>
-							<h2 property="dc:title" datatype="" class="node-title"><a href="#">Worf</a></h2>
-						</header>
-						<div class="field-group-format group_last_name_hidden field-group-div group-last-name-hidden last-name speed-none effect-none">
-							<div class="field field-name-field-last-name field-type-text field-label-hidden">
-								<div class="field-items">
-									<div class="field-item even">Worf</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format field-group-div group-person-image collapsible person-image speed-fast effect-none fieldgroup-effects-processed">
-							
-							<div class="field-group-format-wrapper" style="display: block;">
-								<div class="field field-name-field-imageList-image field-type-image field-label-hidden">
-									<div class="field-items">
-										<div class="field-item even"><img src="images/worf.png" width="120" height="90"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="field-group-format group_person_details field-group-div group-person-details person-details speed-none effect-none">
-							<div class="field field-name-field-missing-from field-type-text field-label-inline clearfix">
-								<div class="field-label">Rank:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Lieutenant Commander</div>
-								</div>
-							</div>
-							<div class="field field-name-field-date-missing field-type-text field-label-inline clearfix">
-								<div class="field-label">Date of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Earth equivalent: Dec. 9, 2340</div>
-								</div>
-							</div>
-							<div class="field field-name-field-circumstances field-type-taxonomy-term-reference field-label-inline clearfix">
-								<div class="field-label">Place of Birth:&nbsp;</div>
-								<div class="field-items">
-									<div class="field-item even">Qo'noS,Klingon Empire</div>
-								</div>
-							</div>
-						</div>
-					</article>
+				<li>
+					<img src="images/worf.png" width="120" height="90">
+					<h2><a href="#">Worf</a></h2>
+					<p class="last-name">Worf</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Lieutenant Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>December 9, 2340 (Terran equivalent)<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Qo'noS, Klingon Empire<span></p>
 				</li>
 			</ul>
 		</div>
@@ -1229,8 +943,8 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> 
 <script src="javascripts/main.js"></script> 
-<script src="javascripts/jquery-listnav.js"></script> 
 <script src="javascripts/jquery-cookie.js"></script> 
+<script src="javascripts/jquery-listnav.js"></script> 
 <script src="javascripts/rainbow-custom.min.js"></script> 
 <script>
 $(function(){
@@ -1256,7 +970,7 @@ $(function(){
 		prefixes: ['the', 'a']
 	});
 	$('#demoSeven').listnav({
-		sortElement: '.last-name',
+		filterSelector: '.last-name',
 		includeNums: false,
 		removeDisabled: true
 	});

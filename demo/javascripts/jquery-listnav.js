@@ -1,113 +1,166 @@
 /*
 *
 * jQuery listnav plugin
-* Copyright (c) 2009 iHwy, Inc.
-* Author: Jack Killpatrick
-*
-* Version 2.1 (08/09/2009)
-* Requires jQuery 1.3.2, jquery 1.2.6 or jquery 1.2.x plus the jquery dimensions plugin
-*
-* Visit http://www.ihwy.com/labs/jquery-listnav-plugin.aspx for more information.
+* Original Version Copyright iHwy, Jack Killpatrick
 *
 * Dual licensed under the MIT and GPL licenses:
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
 *
-* Version 2.2 (08/03/10)
+* Version 2.2 (01/04/13)
 * Author: Eric Steinborn
 * Compatibility:
 * jQuery 1.3.x through 1.8.3.
-* (did not check to see if it worked with 1.2.x)
 * This is confirmed compatible with IE6+, FF, Chrome & Safari
 * CSS is a little wonky in IE6, just set your listnav class to be 100% width and it works fine.
+*
+* ListNav will create an alphabetical navigation above your list that you can click on to filter 
+* your list items and will hide the other letters.
+* 
 */
 (function ($) {
+
     $.fn.listnav = function (options) {
+
         var opts = $.extend({}, $.fn.listnav.defaults, options),
             letters = ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-'],
             firstClick = false;
  
         opts.prefixes = $.map(opts.prefixes, function (n) {
+            
             return n.toLowerCase();
+
         });
  
         return this.each(function () {
-            var $wrapper, list, $letters, $letterCount, id = this.id,
-                $list = $(this);
-            if (!$('#' + id + '-nav').length) {
-                // TODO: remove the need to add the html part of this yourself, and just do it programatically.
-                $('<div id="' + id + '-nav" class="listNav"/>').insertBefore($list);
-            }
-            $wrapper = $('#' + id + '-nav'); // user must abide by the convention: <ul id="myList"> for list and <div id="myList-nav"> for nav wrapper
-            var counts = {},
+
+            var $wrapper, $letters, $letterCount,
+                id = this.id,
+                $list = $(this),
+                counts = {},
                 allCount = 0,
                 isAll = true,
                 numCount = 0,
                 prevLetter = '';
- 
+
+            if ( !$('#' + id + '-nav').length ) {
+
+                $('<div id="' + id + '-nav" class="listNav"/>').insertBefore($list);
+                // Insert the nav if its not been inserted already (preferred method)
+                // Legacy method was to add the nav yourself in HTML, I didn't like that requirement
+            
+            }
+
+            $wrapper = $('#' + id + '-nav'); 
+            // <ul id="myList"> for list and <div id="myList-nav"> for nav wrapper 
+
             function init() {
+
                 $wrapper.append(createLettersHtml());
-                $letters = $('.ln-letters', $wrapper).slice(0, 1); // will always be a single item
-                if (opts.showCounts) {
-                    $letterCount = $('.ln-letter-count', $wrapper).slice(0, 1); // will always be a single item
+
+                $letters = $('.ln-letters', $wrapper).slice(0, 1);
+
+                if ( opts.showCounts ) {
+
+                    $letterCount = $('.ln-letter-count', $wrapper).slice(0, 1); 
+                
                 }
+
                 addClasses();
+                
                 addNoMatchLI();
-                if (opts.flagDisabled) {
-                    addDisabledClass();
-                }
+                
                 bindHandlers();
- 
+
+                if (opts.flagDisabled) {
+                
+                    addDisabledClass();
+                
+                } 
+                
                 // remove nav items we don't need
-                //
-                if (!opts.includeAll) {
+                
+                if ( !opts.includeAll ) {
+
                     $('.all', $letters).remove();
+
                 }
-                if (!opts.includeNums) {
+                if ( !opts.includeNums ) {
+
                     $('._', $letters).remove();
+
                 }
-                if (!opts.includeOther) {
+                if ( !opts.includeOther ) {
+
                     $('.-', $letters).remove();
+
                 }
-                if (opts.removeDisabled) {
+                if ( opts.removeDisabled ) {
+
                     $('.ln-disabled', $letters).remove();
+
                 }
- 
-                $(':last', $letters).addClass('ln-last'); // allows for styling a case where last item needs right border set (because items before that only have top, left and bottom so that border between items isn't doubled)
-                if ($.cookie && (opts.cookieName !== null)) {
+
+                $(':last', $letters).addClass('ln-last'); 
+
+                if ( $.cookie && (opts.cookieName !== null) ) {
+
                     var cookieLetter = $.cookie(opts.cookieName);
-                    if (cookieLetter !== null) {
+
+                    if ( cookieLetter !== null ) {
+
                         opts.initLetter = cookieLetter;
+
                     }
+
                 }
  
                 // decide what to show first
-                //
-                if (opts.initLetter !== '') {
+                
+                // Is there an initLetter set, if so, show that letter first
+                if ( opts.initLetter !== '' ) {
+
                     firstClick = true;
-                    $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).click(); // click the initLetter if there was one
+
+                    // click the initLetter if there was one
+                    $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).click(); 
+
                 } else {
-                    if (opts.includeAll) {
-                        $('.all', $letters).addClass('ln-selected'); // showing all: we don't need to click this: the whole list is already loaded
-                    } else { // ALL link is hidden, click the first letter that will display LI's
-                        for (var i = ((opts.includeNums) ? 0 : 1); i < letters.length; i++) {
-                            if (counts[letters[i]] > 0) {
+
+                    // If no init letter is set, and you included All, then show it
+                    if ( opts.includeAll ) {
+
+                        // make the All link look clicked, but don't actually click it
+                        $('.all', $letters).addClass('ln-selected'); 
+
+                    } else {
+
+                        // All was not included, lets find the first letter with a count and show it
+                        for ( var i = ((opts.includeNums) ? 0 : 1); i < letters.length; i++) {
+
+                            if ( counts[letters[i]] > 0 ) {
+
                                 firstClick = true;
+
                                 $('.' + letters[i], $letters).slice(0, 1).click();
+
                                 break;
+
                             }
                         }
                     }
                 }
             }
  
-            // positions the letter count div above the letter links (so we only have to do it once: after this we just change it's left position via mouseover)
-            //
+            // position the letter count above the letter links
             function setLetterCountTop() {
-                var letterCountHeight = $letterCount.outerHeight(); // we're going to need to subtract this from the top value of the wrapper to accomodate changes in font-size in CSS.
+
+                // we're going to need to subtract this from the top value of the wrapper to accomodate changes in font-size in CSS.
+                var letterCountHeight = $letterCount.outerHeight();
+
                 $letterCount.css({
-                    top: $('a:first', $wrapper).slice(0, 1).position().top - letterCountHeight//- ( $wrapper.outerHeight())
+                    top: $('a:first', $wrapper).slice(0, 1).position().top - letterCountHeight
                     // we're going to grab the first anchor in the list
                     // We can no longer guarantee that a specific letter will be present
                     // since adding the "removeDisabled" option
@@ -117,64 +170,110 @@
             }
  
             // adds a class to each LI that has text content inside of it (ie, inside an <a>, a <div>, nested DOM nodes, etc)
-            //
             function addClasses() {
-                var str, firstChar = '', firstWord, spl, $this, hasPrefixes = (opts.prefixes.length > 0), hasSortElement = (opts.sortElement.length > 0);
+
+                var str, spl, $this,
+                    firstChar = '',
+                    hasPrefixes = (opts.prefixes.length > 0),
+                    hasFilterSelector = (opts.filterSelector.length > 0);
+
+                // Iterate over the list and set a class on each one and use that to filter by
                 $($list).children().each(function () {
+
                     $this = $(this);
                     
-                    if ( !hasSortElement ) {
-                        // Chances are good that you aren't going to use hasSortElement, so lets keep this at the top
+                    // I'm assuming you didn't choose a filterSelector, hopefully saving some cycles
+                    if ( !hasFilterSelector ) {
+                        
+                        //Grab the first text content of the LI, we'll use this to filter by
                         str = $.trim($this.text()).toLowerCase();
 
                     } else {
-                        // lets find the sort element and use that to search by instead
-                        str = $.trim($this.find(opts.sortElement).text()).toLowerCase();
+
+                        // You set a filterSelector so lets find it and use that to search by instead
+                        str = $.trim($this.find(opts.filterSelector).text()).toLowerCase();
 
                     }
 
+                    // This will run only if there is something to filter by, skipping over images and non-filterable content.
                     if (str !== '') {
+
+                        // Apply the non-prefix class to LIs that have prefixed content in them
                         if (hasPrefixes) {
+
                             spl = str.split(' ');
-                            if ((spl.length > 1) && ($.inArray(spl[0], opts.prefixes) > -1)) {
+
+                            if ( (spl.length > 1) && ($.inArray(spl[0], opts.prefixes) > -1) ) {
+
+                                // Have to do this backwards
+                                // Finds the non-prefix first letter
+                                // Ex: prefixes: ["The"] -> "The Lord of the Rings" = "L"
                                 firstChar = spl[1].charAt(0);
-                                addLetterClass(firstChar, $this, true); // add the prefixes letter class in addition to its regular class
+
+                                // Add the non-prefix class
+                                // Sends true to not double up on the count # for "ALL"
+                                addLetterClass(firstChar, $this, true);
+                            
                             }
+
                         }
+
+                        // Find the first letter in the LI, including prefixes
                         firstChar = str.charAt(0);
+
+                        // Doesn't send true to function, which will ++ the All count on prefixed items
                         addLetterClass(firstChar, $this);
                     }
                 });
             }
- 
+
+            // Add the appropriate letter class to the current element 
             function addLetterClass(firstChar, $el, isPrefix) {
-                if (/\W/.test(firstChar)) {
+
+                if ( /\W/.test(firstChar) ) {
+
                     firstChar = '-'; // not A-Z, a-z or 0-9, so considered "other"
+
                 }
-                if (!isNaN(firstChar)) {
+
+                if ( !isNaN(firstChar) ) {
+
                     firstChar = '_'; // use '_' if the first char is a number
+
                 }
+
                 $el.addClass('ln-' + firstChar);
  
-                if (counts[firstChar] === undefined) {
+                if ( counts[firstChar] === undefined ) {
+
                     counts[firstChar] = 0;
+
                 }
+
                 counts[firstChar]++;
+
                 if (!isPrefix) {
+
                     allCount++;
+
                 }
+
             }
  
             function addDisabledClass() {
-                for (var i = 0; i < letters.length; i++) {
-                    if (counts[letters[i]] === undefined) {
+
+                for ( var i = 0; i < letters.length; i++ ) {
+
+                    if ( counts[letters[i]] === undefined ) {
+
                         $('.' + letters[i], $letters).addClass('ln-disabled');
+
                     }
                 }
             }
  
             function addNoMatchLI() {
-                $list.append('<li class="ln-no-match" style="display:none">' + opts.noMatchText + '</li>');
+                $list.append('<li class="ln-no-match listNavHide">' + opts.noMatchText + '</li>');
             }
  
             function getLetterCount(el) {
@@ -188,10 +287,6 @@
  
             function bindHandlers() {
  
-                
- 
-                // mouseover for each letter: 
-
                 if (opts.showCounts) {
                     // sets the top position of the count div in case something above it on the page has resized
                     $wrapper.mouseover(function () {
@@ -208,9 +303,9 @@
                         $letterCount.css({
                             left: left,
                             width: width
-                        }).text(count).show(); // set left position and width of letter count, set count text and show it
+                        }).text(count).addClass("listNavShow").removeClass("listNavHide"); // set left position and width of letter count, set count text and show it
                     }).mouseout(function () { // mouseout for each letter: hide the count
-                        $letterCount.hide();
+                        $letterCount.addClass("listNavHide").removeClass("listNavShow");
                     });
                 }
  
@@ -231,9 +326,9 @@
                         if ( letter === 'all' ) {
                             // If ALL button is clicked:
                             
-                            $list.children().show(); // Show ALL
+                            $list.children().addClass("listNavShow").removeClass("listNavHide"); // Show ALL
 
-                            noMatches.hide(); // Hide the list item for no matches
+                            noMatches.addClass("listNavHide").removeClass("listNavShow"); // Hide the list item for no matches
 
                             isAll = true; // set this to quickly check later
 
@@ -243,23 +338,23 @@
                             if ( isAll ) {
                                 // since you clicked ALL last time:
                                 
-                                $list.children().hide();
+                                $list.children().addClass("listNavHide").removeClass("listNavShow");
 
                                 isAll = false;
 
                             } else if (prevLetter !== '') {
 
-                                $list.children('.ln-' + prevLetter).hide();
+                                $list.children('.ln-' + prevLetter).addClass("listNavHide").removeClass("listNavShow");
                             
                             }
      
                             var count = getLetterCount(this);
                             
                             if (count > 0) {
-                                $list.children('.ln-' + letter).show();
-                                noMatches.hide(); // in case it's showing
+                                $list.children('.ln-' + letter).addClass("listNavShow").removeClass("listNavHide");
+                                noMatches.addClass("listNavHide").removeClass("listNavShow"); // in case it's showing
                             } else {
-                                noMatches.show();
+                                noMatches.addClass("listNavShow").removeClass("listNavHide");
                             }
      
                             
@@ -303,7 +398,9 @@
                     }
                     html.push('<a class="' + letters[i] + '" href="#">' + ((letters[i] === '-') ? '...' : letters[i].toUpperCase()) + '</a>');
                 }
-                return '<div class="ln-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="ln-letter-count" style="display:none; position:absolute; top:0; left:0; width:20px;">0</div>' : ''); // the styling for ln-letter-count is to give us a starting point for the element, which will be repositioned when made visible (ie, should not need to be styled by the user)
+                return '<div class="ln-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="ln-letter-count listNavHide">0</div>' : '');
+                // Remove inline styles, replace with css class
+                // Element will be repositioned when made visible
             }
             init();
         });
@@ -321,6 +418,6 @@
         cookieName: null,
         onClick: null,
         prefixes: [],
-        sortElement: ''
+        filterSelector: ''
     };
 })(jQuery);
