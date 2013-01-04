@@ -41,7 +41,6 @@
                 counts = {},
                 allCount = 0,
                 isAll = true,
-                numCount = 0,
                 prevLetter = '';
 
             if ( !$('#' + id + '-nav').length ) {
