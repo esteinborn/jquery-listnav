@@ -7,21 +7,24 @@ But also realized that I needed to make it even more forward compatible, so it s
 <p><a href="http://esteinborn.github.com/jquery-listnav">View the ListNav Demo</a></p>
 
 Simple Usage:
-
+-------------
 Insert into &lt;Head&gt;:
+-------------------------
 <pre><code>&lt;link rel="stylesheet" href="listnav.css"&gt;</code></pre>
 
 Code up your list:
+------------------
 <pre><code>&lt;ul id="myList"&gt;...&lt;/ul&gt;</code></pre>
 
 Insert before &lt;/body&gt;:
+----------------------------
 <pre><code>&lt;script src="jquery-listnav-2.2.min.js"&gt;&lt;/script>
 &lt;script&gt;
 	$("#myList").listnav();
 &lt;/script&gt;</code></pre>
 
 Available OPTIONS:
-
+------------------
 <pre><code>$("myList").listnav({
 	initLetter: '',        // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
     includeAll: true,      // Include the ALL button
