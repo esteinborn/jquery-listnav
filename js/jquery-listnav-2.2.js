@@ -310,7 +310,8 @@
  
                 // click handler for letters: shows/hides relevant LI's
                 //
-                $('a', $letters).bind("click tap", function (e) {
+                var clickEventType=((document.ontouchstart!==null)?'click':'touchstart'); //detect if you are on a touch device easily.
+                $('a', $letters).bind(clickEventType, function (e) {
                     e.preventDefault();
                     var $this = $(this),
                         letter = $this.attr('class').split(' ')[0],
