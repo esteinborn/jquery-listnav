@@ -310,7 +310,7 @@
  
                 // click handler for letters: shows/hides relevant LI's
                 //
-                $('a', $letters).click( function (e) {
+                $('a', $letters).bind("click, tap", function (e) {
                     e.preventDefault();
                     var $this = $(this),
                         letter = $this.attr('class').split(' ')[0],
