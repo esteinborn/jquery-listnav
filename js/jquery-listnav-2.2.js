@@ -8,10 +8,10 @@
 *   http://www.gnu.org/licenses/gpl.html
 *
 *
-* Version 2.2 (01/04/13)
+* Version 2.3 (01/04/13)
 * Author: Eric Steinborn
 * Compatibility:
-* jQuery 1.3.x through 1.8.3.
+* jQuery 1.3.x through 1.9.1
 * This is confirmed compatible with IE6+, FF, Chrome & Safari
 * CSS is a little wonky in IE6, just set your listnav class to be 100% width and it works fine.
 *
