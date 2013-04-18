@@ -302,9 +302,9 @@
                         $letterCount.css({
                             left: left,
                             width: width
-                        }).text(count).addClass("listNavShow").removeClass("listNavHide"); // set left position and width of letter count, set count text and show it
+                        }).text(count).addClass("letterCountShow").removeClass("listNavHide"); // set left position and width of letter count, set count text and show it
                     }).mouseout(function () { // mouseout for each letter: hide the count
-                        $letterCount.addClass("listNavHide").removeClass("listNavShow");
+                        $letterCount.addClass("listNavHide").removeClass("letterCountShow");
                     });
                 }
  
