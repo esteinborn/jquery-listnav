@@ -7,7 +7,8 @@
 
 .listNav, .ln-letters { overflow:hidden;}
 .listNavHide {display: none;}
-.listNavShow {display: block;}
+.listNavShow {display: list-item;}
+.letterCountShow {display: block;}
 .ln-letters a { font-size:0.9em; display:block; float:left; padding:2px 6px; border:1px solid silver; border-right:none; text-decoration:none; }
 .ln-letters a.ln-last { border-right:1px solid silver; }
 .ln-letters a:hover,
