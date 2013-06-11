@@ -1,0 +1,38 @@
+{
+    "name": "listnav",
+    "title": "jQuery ListNav",
+    "description": "Add a slick \"letter-based\" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter.",
+    "keywords": [
+        "listnav",
+        "list",
+        "ul",
+        "li",
+        "sort",
+        "navigation",
+        "filter"
+    ],
+    "version": "2.2",
+    "author": {
+        "name": "Eric Steinborn",
+        "url": "http://ericsteinborn.com"
+    },
+    "maintainers": [
+        {
+            "name": "Eric Steinborn",
+            "email": "esteinborn@gmail.com",
+            "url": "http://ericsteinborn.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/esteinborn/jquery-listnav/license.md"
+        }
+    ],
+    "bugs": "https://github.com/esteinborn/jquery-listnav/issues",
+    "homepage": "http://esteinborn.github.io/jquery-listnav",
+    "docs": "https://github.com/esteinborn/jquery-listnav",
+    "dependencies": {
+        "jquery": ">=1.3"
+    }
+}
