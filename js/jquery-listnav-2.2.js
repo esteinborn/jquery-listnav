@@ -199,29 +199,28 @@
 
                         // Apply the non-prefix class to LIs that have prefixed content in them
                         if (hasPrefixes) {
+							var prefixes = $.map(opts.prefixes, function(value) {
+								return value.indexOf(' ') <= 0 ? value + ' ' : value;
+							});
+							var matches = $.grep(prefixes, function(value) {
+								return str.indexOf(value) == 0;
+							});
+							if (matches.length > 0) {
+								var afterMatch = str.toLowerCase().split(matches[0])[1];
+								if(afterMatch != null) {
+									firstChar = $.trim(afterMatch).charAt(0);
+								} else {
+									firstChar = str.charAt(0);
+								}
+								addLetterClass(firstChar, $this, true);
+								return;
+                            } 
+						}
+						// Find the first letter in the LI, including prefixes
+						firstChar = str.charAt(0);
 
-                            spl = str.split(' ');
-
-                            if ( (spl.length > 1) && ($.inArray(spl[0], opts.prefixes) > -1) ) {
-
-                                // Have to do this backwards
-                                // Finds the non-prefix first letter
-                                // Ex: prefixes: ["The"] -> "The Lord of the Rings" = "L"
-                                firstChar = spl[1].charAt(0);
-
-                                // Add the non-prefix class
-                                // Sends true to not double up on the count # for "ALL"
-                                addLetterClass(firstChar, $this, true);
-                            
-                            }
-
-                        }
-
-                        // Find the first letter in the LI, including prefixes
-                        firstChar = str.charAt(0);
-
-                        // Doesn't send true to function, which will ++ the All count on prefixed items
-                        addLetterClass(firstChar, $this);
+						// Doesn't send true to function, which will ++ the All count on prefixed items
+						addLetterClass(firstChar, $this);
                     }
                 });
             }
