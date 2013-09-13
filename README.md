@@ -1,9 +1,11 @@
 jQuery ListNav
 ==============
 
-Original plugin by iHWY. I have upgraded it and it is now compatible with jQuery 1.9.1
+Add a slick "letter-based" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter.
 
-<p><a href="http://esteinborn.github.com/jquery-listnav">View the ListNav Demo</a></p>
+Updated for better compatibility with future jQuery versions. Original plugin by iHwy.
+
+[View the ListNav Demo](http://esteinborn.github.io/jquery-listnav)
 
 Simple Usage:
 -------------
