@@ -30,6 +30,7 @@
 			<li><a href="#tabpage_5">Demo 5</a></li>
 			<li><a href="#tabpage_6">Demo 6</a></li>
 			<li><a href="#tabpage_7">Demo 7</a></li>
+			<li><a href="#tabpage_8">Demo 8</a></li>
 		</ul>
 		<div id="tabpage_1" class="tabContainer">
 			<h3>The default configuration</h3>
@@ -933,6 +934,20 @@
 				</li>
 			</ul>
 		</div>
+		<div id="tabpage_8" class="tabContainer">
+			<h3>Ignore multi word prefixes to titles with <code>prefixes</code></h3>
+			<pre><code data-language="javascript">$('#demoEight').listnav({
+    prefixes: ['The Complete Works of', 'A']
+});</code></pre>
+		<ul id="demoEight" class="demo">
+			<li>The Complete Works of Shakespeare</li>
+			<li>The Complete Works of Joe Blogs</li>
+			<li>A Story About Something</li>
+			<li>Macbeth</li>
+			<li>Hamlet</li>
+			<li>A Play on Words</li>
+		</ul>
+		</div>
 	</section>
 </div>
 <!-- FOOTER  -->
@@ -973,6 +988,9 @@ $(function(){
 		filterSelector: '.last-name',
 		includeNums: false,
 		removeDisabled: true
+	});
+	$('#demoEight').listnav({
+		prefixes: ['The Complete Works of', 'A']
 	});
 	$('.demo a').click(function(e) {
 		e.preventDefault();
