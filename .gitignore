@@ -1,5 +1,5 @@
-jquery-listnav.sublime-project
-jquery-listnav.sublime-workspace
+*.sublime*
 .DS_Store
 working-files
 .gitignore
+node_modules

@@ -1,0 +1,28 @@
+{
+  "name": "Git-Repo-Name",
+  "title": "Name",
+  "version": "0.0.0",
+  "author": "",
+  "description": "",
+  "demo": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esteinborn/Git-Repo-Name"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-compass": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-csslint": "~0.1.2",
+    "globule": "~0.1.0",
+    "grunt-beep": "~0.3.0"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/esteinborn/Git-Repo-Name/blob/master/license.md"
+  }
+}
