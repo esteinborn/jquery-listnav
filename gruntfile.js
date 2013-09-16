@@ -21,8 +21,8 @@ module.exports = function(grunt) {
           ],
           {
             srcBase: "src/js",
-            destBase: "js",
-            ext: '.js', // Give them a .min.js extension
+            destBase: "build/js",
+            ext: '.min.js', // Give them a .min.js extension
             extDot: 'last'  // Fixes the issue of finding multiple dots in a filename
           })
 			}
@@ -67,11 +67,11 @@ module.exports = function(grunt) {
 			}
 		},
 		csslint: {
-			uno: {
+			css: {
 				options: {
 					import: 2
 				},
-				src: ['css/name.css']
+				src: ['build/css/listnav.css']
 			},
 		},
     compass: {
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
           //'toolkit'
         ],
         //basePath: "/",
-        cssDir: 'css',
+        cssDir: 'build/css',
         sassDir: 'src/scss',
         environment: 'development',
         imagesDir: 'images',
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          basePath: "/"
+          //basePath: "/"
           //debugInfo: true
         }
       },
@@ -105,55 +105,28 @@ module.exports = function(grunt) {
           environment: 'production'
         }
       }
-    }//,
-    // copy: {
-    //   jsDev: {
-    //     files: [{
-    //     	expand: true,
-    //     	flatten: true,
-    //       cwd: 'js',
-    //       src: ['src/**/*.js'],
-    //       dest: 'js',
-    //       filter: 'isFile'
-    //     }]
-    //   },
-    //   jsQA: {
-    //     files: [{
-    //     	expand: true,
-    //     	cwd: 'js',
-    //     	src: ['body.js', 'dcjs.js', 'homepage.js'],
-    //     	dest: 'k:/js/',
-    //     	filter: 'isFile'
-    //     }]
-    //   },
-    //   jsProd: {
-    //     files: [{
-    //       	expand: true,
-    //       	cwd: 'js',
-    //       	src: ['body.js', 'dcjs.js', 'homepage.js'],
-    //       	dest: 'l:/js/',
-    //       	filter: 'isFile'
-    //       }]
-    //   },
-    //   cssQA: {
-    //     files: [{
-    //     	expand: true,
-    //     	cwd: 'css',
-    //     	src: ['style.css'],
-    //     	dest: 'k:/css/',
-    //     	filter: 'isFile'
-    //     }]
-    //   },
-    //   cssProd: {
-    //     files: [{
-    //     	expand: true,
-    //     	cwd: 'css',
-    //     	src: ['style.css'],
-    //     	dest: 'l:/css/',
-    //     	filter: 'isFile'
-    //     }]
-    //   }
-    // }
+    },
+    copy: {
+      jsBuild: {
+        files: [{
+        	expand: true,
+        	flatten: true,
+          cwd: 'src',
+          src: ['js/**/*.js'],
+          dest: 'build/js',
+          filter: 'isFile'
+        }]
+      },
+      demoBuild: {
+        files: [{
+        	expand: true,
+        	cwd: 'src',
+        	src: ['demo/**/*'],
+        	dest: 'build',
+        	filter: 'isFile'
+        }]
+      }
+    }
 	});
 
 	// Load the plugins
@@ -162,7 +135,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-beep');
 
   grunt.registerTask('dev', 'Development build', function(args) {
@@ -171,7 +144,7 @@ module.exports = function(grunt) {
       'compass:dev',
       'csslint',
       'jshint',
-      //'copy:jsDev',
+      'copy:jsBuild',
       'beep:3'
     ]);
   });

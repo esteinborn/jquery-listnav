@@ -1,0 +1,23 @@
+---
+language: node_js
+node_js:
+- '0.10'
+before_script:
+- gem update --system
+- gem install compass
+- gem install breakpoint
+- gem install sass-media_query_combiner
+- gem install toolkit
+- npm install -g grunt-cli
+script:
+- grunt
+
+after_success:
+- chmod -R 777 .travis-build.sh
+- ./.travis-build.sh
+env:
+  global:
+  - secure: |-
+      mNo6ienZHJY7f8iYhoceHwv9Rgv2EAT/PAa/mb+wAEQE/PBAdqnw1gokelt+
+      17TOJYf2en6WHHItbBy9ynSjvzH5s+lywljmuUJa7jeoy9y20HmiOMAQ+Nc2
+      btPHn8FFTT7ltmzz5Mnn26CftYyuaPzwuq2oip3GmPRXxHqkFsk=
