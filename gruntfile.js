@@ -166,6 +166,7 @@ module.exports = function(grunt) {
     grunt.task.run([
       'compass:prod',
       'uglify',
+      'copy:jsBuild',
       'beep:3'
     ]);
   });
@@ -173,8 +174,6 @@ module.exports = function(grunt) {
   grunt.registerTask('prodCSS', 'Production build', function(args) {
     grunt.task.run([
       'compass:prod',
-      // 'copy:cssQA',
-      // 'copy:cssProd',
       'beep:3'
     ]);
   });
@@ -182,14 +181,13 @@ module.exports = function(grunt) {
   grunt.registerTask('prodJS', 'Production build', function(args) {
     grunt.task.run([
       'uglify',
-      // 'copy:jsQA',
-      // 'copy:jsProd',
       'beep:3'
     ]);
   });
 
   grunt.registerTask('pages', 'Production build', function(args) {
     grunt.task.run([
+      'prod',
       'gh-pages'
     ]);
   });
