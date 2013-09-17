@@ -137,7 +137,7 @@ module.exports = function(grunt) {
         }
       },
       // These files will get pushed to the `gh-pages` branch (the default).
-      src: ['**/*']
+      src: ['**/*', '.gitignore']
     },
 	});
 
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
     grunt.task.run([
       'compass:prod',
       'uglify',
-      'copy:jsBuild',
+      'copy',
       'beep:3'
     ]);
   });
