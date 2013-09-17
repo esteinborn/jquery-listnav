@@ -19,7 +19,8 @@
     "grunt-contrib-cssmin": "~0.6.0",
     "grunt-contrib-csslint": "~0.1.2",
     "globule": "~0.1.0",
-    "grunt-beep": "~0.3.0"
+    "grunt-beep": "~0.3.0",
+    "grunt-gh-pages": "~0.7.2"
   },
   "license": {
     "type": "MIT",

@@ -126,7 +126,19 @@ module.exports = function(grunt) {
         	filter: 'isFile'
         }]
       }
-    }
+    },
+    'gh-pages': {
+      options: {
+        base: 'build',
+        clone: 'gh-pages',
+        user: {
+          name: 'Eric Steinborn',
+          email: 'esteinborn@gmail.com'
+        }
+      },
+      // These files will get pushed to the `gh-pages` branch (the default).
+      src: ['**/*']
+    },
 	});
 
 	// Load the plugins
@@ -137,6 +149,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-beep');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('dev', 'Development build', function(args) {
      // grunt.log.write("my message");
@@ -172,6 +185,12 @@ module.exports = function(grunt) {
       // 'copy:jsQA',
       // 'copy:jsProd',
       'beep:3'
+    ]);
+  });
+
+  grunt.registerTask('pages', 'Production build', function(args) {
+    grunt.task.run([
+      'gh-pages'
     ]);
   });
 
