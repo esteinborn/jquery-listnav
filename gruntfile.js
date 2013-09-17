@@ -187,7 +187,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('pages', 'Production build', function(args) {
     grunt.task.run([
-      'prod',
       'gh-pages'
     ]);
   });
