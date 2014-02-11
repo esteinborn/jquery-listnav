@@ -1,30 +1,20 @@
 /*global module: false */
 module.exports = function(grunt) {
 
-  var globule = require('globule'); // Declare globule for use in the Gruntfile
-
-	// Project configuration
+  // Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		uglify: {
 			options: {
-				//mangle: false, // Don't change variable and function names
 				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - ' +
-						'<%= grunt.template.today("yyyy-mm-dd") %>  - ' +
-						'Copyright <%= pkg.author %> */\n'
+						'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+						'Copyright <%= pkg.author %> - ' +
+            '<%= pkg.repository.url %> */\n'
 			},
 			js: {
-        files:
-          globule.findMapping(
-          [
-            '*.js', // Source files to find
-          ],
-          {
-            srcBase: "src/js",
-            destBase: "build/js",
-            ext: '.min.js', // Give them a .min.js extension
-            extDot: 'last'  // Fixes the issue of finding multiple dots in a filename
-          })
+        files: {
+          'dist/js/jquery-listnav-<%= pkg.version %>.min.js': 'src/js/jquery-listnav.js'
+        }
 			}
 		},
 		jshint: {
@@ -48,11 +38,11 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'compass:dev',
-        	'csslint',
+          'csslint',
           'beep:3'
         ]
-	    },
-	    scripts: {
+      },
+      scripts: {
         options: {
           interrupt: true
         },
@@ -71,90 +61,67 @@ module.exports = function(grunt) {
 				options: {
 					import: 2
 				},
-				src: ['build/css/listnav.css']
+				src: ['dist/css/listnav.css']
 			},
 		},
-    compass: {
-      options: {
-        require: [
-          'breakpoint',
-          //'sass-media_query_combiner',
-          //'toolkit'
-        ],
-        //basePath: "/",
-        cssDir: 'build/css',
-        sassDir: 'src/scss',
-        environment: 'development',
-        imagesDir: 'images',
-        javascriptsDir: 'js',
-        outputStyle: 'expanded', //nested, expanded, compact, compressed
-        //noLineComments: true,
-        relativeAssets: true,
-        //sourcemap: true,
-        force: true
-      },
+    sass: {
       dev: {
         options: {
-          //basePath: "/"
-          //debugInfo: true
+          outputStyle: 'nested'
+        },
+        files: {
+          'dist/css/listnav.css': 'src/scss/listnav.scss',
+          'dist/demo/css/stylesheet.css': 'src/demo/scss/stylesheet.scss'
         }
       },
       prod: {
         options: {
-          outputStyle: 'compressed',
-          environment: 'production'
+          outputStyle: 'compressed'
+        },
+        files: {
+          'dist/css/listnav.css': 'src/scss/listnav.scss',
+          'dist/demo/css/stylesheet.css': 'src/demo/scss/stylesheet.scss'
         }
       }
     },
     copy: {
       jsBuild: {
-        files: [{
-        	expand: true,
-        	flatten: true,
-          cwd: 'src',
-          src: ['js/**/*.js'],
-          dest: 'build/js',
-          filter: 'isFile'
-        }]
+        files: {
+          'dist/js/jquery-listnav-<%= pkg.version %>.js': 'src/js/jquery-listnav.js'
+        }
       },
       demoBuild: {
         files: [{
-        	expand: true,
-        	cwd: 'src',
-        	src: ['demo/**/*'],
-        	dest: 'build',
-        	filter: 'isFile'
+          expand: true,
+          cwd: 'src',
+          src: ['index.html', 'demo/**/*', '!demo/scss/**/*'],
+          dest: 'dist',
+          filter: 'isFile'
         }]
       }
     },
     'gh-pages': {
       options: {
-        base: 'build',
+        base: 'dist',
         clone: 'gh-pages',
+        dotfiles: true,
         user: {
           name: 'Eric Steinborn',
           email: 'esteinborn@gmail.com'
         }
       },
       // These files will get pushed to the `gh-pages` branch (the default).
-      src: ['**/*', '.gitignore']
+      src: '**/*'
     },
 	});
 
 	// Load the plugins
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-beep');
-  grunt.loadNpmTasks('grunt-gh-pages');
+  require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('dev', 'Development build', function(args) {
      // grunt.log.write("my message");
     grunt.task.run([
-      'compass:dev',
+      'sass:dev',
       'csslint',
       'jshint',
       'copy:jsBuild',
@@ -164,7 +131,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prod', 'Production build', function(args) {
     grunt.task.run([
-      'compass:prod',
+      'sass:prod',
       'uglify',
       'copy',
       'beep:3'
@@ -173,7 +140,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prodCSS', 'Production build', function(args) {
     grunt.task.run([
-      'compass:prod',
+      'sass:prod',
       'beep:3'
     ]);
   });
