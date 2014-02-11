@@ -11,7 +11,7 @@
 * Version 2.4 (02/11/14)
 * Author: Eric Steinborn
 * Compatibility:
-* jQuery 1.3.x through 1.9.1
+* jQuery 1.3.x through 1.11.0
 * This is confirmed compatible with IE6+, FF, Chrome & Safari
 * CSS is a little wonky in IE6, just set your listnav class to be 100% width and it works fine.
 *
