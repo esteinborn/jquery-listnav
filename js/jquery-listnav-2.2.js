@@ -25,7 +25,9 @@
 
         var opts = $.extend({}, $.fn.listnav.defaults, options),
             letters = ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-'],
-            firstClick = false;
+            firstClick = false,
+            //detect if you are on a touch device easily.
+            clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
 
         opts.prefixes = $.map(opts.prefixes, function (n) {
 
@@ -123,7 +125,7 @@
                     firstClick = true;
 
                     // click the initLetter if there was one
-                    $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).click();
+                    $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).trigger(clickEventType);
 
                 } else {
 
@@ -142,7 +144,7 @@
 
                                 firstClick = true;
 
-                                $('.' + letters[i], $letters).slice(0, 1).click();
+                                $('.' + letters[i], $letters).slice(0, 1).trigger(clickEventType);
 
                                 break;
 
@@ -309,7 +311,6 @@
 
                 // click handler for letters: shows/hides relevant LI's
                 //
-                var clickEventType=((document.ontouchstart!==null)?'click':'touchstart'); //detect if you are on a touch device easily.
                 $('a', $letters).bind(clickEventType, function (e) {
                     e.preventDefault();
                     var $this = $(this),
