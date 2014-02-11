@@ -8,10 +8,10 @@
 *   http://www.gnu.org/licenses/gpl.html
 *
 *
-* Version 2.4 (02/11/14)
+* Version 2.4.0 (02/11/14)
 * Author: Eric Steinborn
 * Compatibility:
-* jQuery 1.3.x through 1.11.0
+* jQuery 1.3.x through 1.11.0 and jQuery 2
 * This is confirmed compatible with IE6+, FF, Chrome & Safari
 * CSS is a little wonky in IE6, just set your listnav class to be 100% width and it works fine.
 *
@@ -201,28 +201,28 @@
 
                         // Apply the non-prefix class to LIs that have prefixed content in them
                         if (hasPrefixes) {
-							var prefixes = $.map(opts.prefixes, function(value) {
-								return value.indexOf(' ') <= 0 ? value + ' ' : value;
-							});
-							var matches = $.grep(prefixes, function(value) {
-								return str.indexOf(value) === 0;
-							});
-							if (matches.length > 0) {
-								var afterMatch = str.toLowerCase().split(matches[0])[1];
-								if(afterMatch != null) {
-									firstChar = $.trim(afterMatch).charAt(0);
-								} else {
-									firstChar = str.charAt(0);
-								}
-								addLetterClass(firstChar, $this, true);
-								return;
+                            var prefixes = $.map(opts.prefixes, function(value) {
+                                return value.indexOf(' ') <= 0 ? value + ' ' : value;
+                            });
+                            var matches = $.grep(prefixes, function(value) {
+                                return str.indexOf(value) === 0;
+                            });
+                            if (matches.length > 0) {
+                                var afterMatch = str.toLowerCase().split(matches[0])[1];
+                                if(afterMatch != null) {
+                                    firstChar = $.trim(afterMatch).charAt(0);
+                                } else {
+                                    firstChar = str.charAt(0);
+                                }
+                                addLetterClass(firstChar, $this, true);
+                                return;
                             }
-						}
-						// Find the first letter in the LI, including prefixes
-						firstChar = str.charAt(0);
+                        }
+                        // Find the first letter in the LI, including prefixes
+                        firstChar = str.charAt(0);
 
-						// Doesn't send true to function, which will ++ the All count on prefixed items
-						addLetterClass(firstChar, $this);
+                        // Doesn't send true to function, which will ++ the All count on prefixed items
+                        addLetterClass(firstChar, $this);
                     }
                 });
             }
