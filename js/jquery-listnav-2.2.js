@@ -8,7 +8,7 @@
 *   http://www.gnu.org/licenses/gpl.html
 *
 *
-* Version 2.3 (01/04/13)
+* Version 2.4 (02/11/14)
 * Author: Eric Steinborn
 * Compatibility:
 * jQuery 1.3.x through 1.9.1
