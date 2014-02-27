@@ -19,7 +19,6 @@
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-csslint": "*",
     "grunt-beep": "*",
-    "grunt-gh-pages": "*",
     "matchdep": "*"
   },
   "license": {

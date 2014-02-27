@@ -5,17 +5,25 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		uglify: {
-			options: {
-				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - ' +
-						'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-						'Copyright <%= pkg.author %> - ' +
-            '<%= pkg.repository.url %> */\n'
-			},
 			js: {
+        options: {
+          banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - ' +
+              '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+              'Copyright <%= pkg.author %> - ' +
+              '<%= pkg.repository.url %> */\n'
+        },
         files: {
           'dist/js/jquery-listnav-<%= pkg.version %>.min.js': 'src/js/jquery-listnav.js'
         }
-			}
+			},
+      vendor: {
+        files: {
+          'dist/demo/js/vendor.js': 
+            ['src/demo/js/jquery-cookie.js',
+            'src/demo/js/main.js',
+            'src/demo/js/rainbow-custom.min.js']
+        }
+      }
 		},
 		jshint: {
 			options: {
@@ -94,7 +102,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src',
-          src: ['index.html', 'demo/**/*', '!demo/scss/**/*'],
+          src: ['demo/**/*', '!demo/scss/**/*'],
           dest: 'dist',
           filter: 'isFile'
         }]

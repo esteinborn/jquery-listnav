@@ -4,7 +4,7 @@ AUTHOR=$(git show -p | grep Author)
 # Check to see if this is a pull request if so skip the test because it was ran during the initial commit.
 if [ "$AUTHOR" != "Author: Travis-CI <travis@travis-ci.org>" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
-echo -e "Starting to update gh-pages\n"
+echo -e "Starting to update GitHub Pages\n"
 
   #copy data we're interested in to other place
   cp -R dist $HOME/dist
@@ -26,7 +26,7 @@ echo -e "Starting to update gh-pages\n"
   git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
   git push -fq origin gh-pages > /dev/null
 
-  echo -e "Done magic with dist\n"
+  echo -e "Done creating GitHub Pages branch!\n"
 else
 
 echo -e "Skipping after script."
