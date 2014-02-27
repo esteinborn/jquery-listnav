@@ -99,20 +99,7 @@ module.exports = function(grunt) {
           filter: 'isFile'
         }]
       }
-    },
-    'gh-pages': {
-      options: {
-        base: 'dist',
-        clone: 'gh-pages',
-        dotfiles: true,
-        user: {
-          name: 'Eric Steinborn',
-          email: 'esteinborn@gmail.com'
-        }
-      },
-      // These files will get pushed to the `gh-pages` branch (the default).
-      src: '**/*'
-    },
+    }
 	});
 
 	// Load the plugins
@@ -149,12 +136,6 @@ module.exports = function(grunt) {
     grunt.task.run([
       'uglify',
       'beep:3'
-    ]);
-  });
-
-  grunt.registerTask('pages', 'Production build', function(args) {
-    grunt.task.run([
-      'gh-pages'
     ]);
   });
 
