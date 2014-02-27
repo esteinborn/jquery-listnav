@@ -1,9 +1,8 @@
 language: node_js
 node_js:
-- '0.10.25'
+- 0.10.25
 before_script:
 - npm install -g grunt-cli
-- npm install
 script:
 - grunt prod
 after_success:
@@ -11,4 +10,4 @@ after_success:
 - ./.travis-build.sh
 env:
   global:
-    secure: BZTQ48vcf8TKhtRm1TUYYrAVD5i5MvDyEgA8r3YTXuimi9Swv6rSNcS24ZEB+Z4eWjDr30VC3LEqM/t0dtQH+wKXWiHSohH/ssHUL+Z0WPYptlR7+KZluCDks18wU5CWRFm+gp6gR4tbsKZT4DZNNMWqrmFQslL6GcjPwgOLR4E=
+    secure: OJbAIG1yFzfU7JTNDzCVxU9+33MjduhvWFkEsIPoUmLe/reKPug11OIFBAnriX7KVnlGBQ8oNIeN5n0o0rZN9FLLSEVGXAviT0BMCnEzJraCFOjrYW6Hf2dPIyuEIzopIVfY9hTXmOJcUstyx3//Iu0pWG/5+StyvK4dK7nR3Kk=
