@@ -3,8 +3,6 @@ jQuery ListNav
 
 Add a slick "letter-based" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter.
 
-Updated for better compatibility with future jQuery versions. Original plugin by iHwy.
-
 [View the ListNav Demo](http://esteinborn.github.io/jquery-listnav)
 
 Simple Usage:
@@ -19,7 +17,7 @@ Code up your list:
 
 Insert before &lt;/body&gt;:
 ----------------------------
-<pre><code>&lt;script src="jquery-listnav-2.2.min.js"&gt;&lt;/script>
+<pre><code>&lt;script src="jquery-listnav-2.4.min.js"&gt;&lt;/script>
 &lt;script&gt;
 	$("#myList").listnav();
 &lt;/script&gt;</code></pre>
@@ -40,3 +38,5 @@ Available OPTIONS:
     prefixes: [],          // Set an array of prefixes that should be counted for the prefix and the first word after the prefix ex: ['the', 'a', 'my']
     filterSelector: ''     // Set the filter to a CSS selector rather than the first text letter for each item
 });</code></pre>
+
+Original plugin by iHwy.
