@@ -8,7 +8,7 @@ echo -e "Starting to update GitHub Pages\n"
 
   #copy data we're interested in to other place
   cp -R dist $HOME/demo
-
+ls -l
   #go to home and setup git
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
@@ -19,6 +19,7 @@ echo -e "Starting to update GitHub Pages\n"
 
   #go into directory and copy data we're interested in to that directory
   cd gh-pages
+  ls -l
   cp -Rf $HOME/demo/* .
 
   #add, commit and push files
