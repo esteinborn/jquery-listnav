@@ -8,20 +8,20 @@ module.exports = function(grunt) {
 			js: {
         options: {
           banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - ' +
-              '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+              '<%= grunt.template.today("yyyy-mm") %>\n' +
               'Copyright <%= pkg.author %> - ' +
               '<%= pkg.repository.url %> */\n'
         },
         files: {
-          'dist/js/jquery-listnav-<%= pkg.version %>.min.js': 'src/js/jquery-listnav.js'
+          'jquery-listnav.min.js': 'jquery-listnav.js'
         }
 			},
       vendor: {
         files: {
-          'dist/demo/js/vendor.js': 
-            ['src/demo/js/jquery-cookie.js',
-            'src/demo/js/main.js',
-            'src/demo/js/rainbow-custom.min.js']
+          'demo/js/vendor.js':
+            ['demo/js/jquery-cookie.js',
+            'demo/js/main.js',
+            'demo/js/rainbow-custom.min.js']
         }
       }
 		},
@@ -36,18 +36,17 @@ module.exports = function(grunt) {
 				}
 			},
       files: [
-        'src/js/*.js'
+        'jquery-listnav.js'
       ]
 		},
 		watch: {
 			sass: {
         files: [
-          'src/scss/**/*.scss'
+          'scss/**/*.scss'
         ],
         tasks: [
-          'compass:dev',
-          'csslint',
-          'beep:3'
+          'sass:listnav',
+          'csslint'
         ]
       },
       scripts: {
@@ -55,12 +54,11 @@ module.exports = function(grunt) {
           interrupt: true
         },
         files: [
-          'src/js/*.js'
+          'listnav.js'
         ],
         tasks: [
           'jshint',
-          'copy:jsDev',
-          'beep:3'
+          'copy'
         ]
 			}
 		},
@@ -69,43 +67,34 @@ module.exports = function(grunt) {
 				options: {
 					import: 2
 				},
-				src: ['dist/css/listnav.css']
+				src: ['css/listnav.css']
 			},
 		},
     sass: {
-      dev: {
+      listnav: {
         options: {
-          outputStyle: 'nested'
+          outputStyle: 'compressed',
+          sourceComments: 'map'
         },
         files: {
-          'dist/css/listnav.css': 'src/scss/listnav.scss',
-          'dist/demo/css/stylesheet.css': 'src/demo/scss/stylesheet.scss'
+          'css/listnav.css': 'scss/listnav.scss',
+          'demo/css/listnav.css': 'scss/listnav.scss'
         }
       },
-      prod: {
+      demo: {
         options: {
           outputStyle: 'compressed'
         },
         files: {
-          'dist/css/listnav.css': 'src/scss/listnav.scss',
-          'dist/demo/css/stylesheet.css': 'src/demo/scss/stylesheet.scss'
+          'demo/css/demo.css': 'demo/scss/stylesheet.scss'
         }
       }
     },
     copy: {
-      jsBuild: {
+      js: {
         files: {
-          'dist/js/jquery-listnav-<%= pkg.version %>.js': 'src/js/jquery-listnav.js'
+          'demo/js/jquery-listnav.js': 'jquery-listnav.js'
         }
-      },
-      demoBuild: {
-        files: [{
-          expand: true,
-          cwd: 'src',
-          src: ['demo/**/*', '!demo/scss/**/*'],
-          dest: 'dist',
-          filter: 'isFile'
-        }]
       }
     }
 	});
@@ -114,36 +103,19 @@ module.exports = function(grunt) {
   require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('dev', 'Development build', function(args) {
-     // grunt.log.write("my message");
     grunt.task.run([
-      'sass:dev',
+      'sass:listnav',
       'csslint',
       'jshint',
-      'copy:jsBuild',
-      'beep:3'
+      'copy'
     ]);
   });
 
-  grunt.registerTask('prod', 'Production build', function(args) {
+  grunt.registerTask('build', 'Production build', function(args) {
     grunt.task.run([
-      'sass:prod',
+      'sass',
       'uglify',
-      'copy',
-      'beep:3'
-    ]);
-  });
-
-  grunt.registerTask('prodCSS', 'Production build', function(args) {
-    grunt.task.run([
-      'sass:prod',
-      'beep:3'
-    ]);
-  });
-
-  grunt.registerTask('prodJS', 'Production build', function(args) {
-    grunt.task.run([
-      'uglify',
-      'beep:3'
+      'copy'
     ]);
   });
 

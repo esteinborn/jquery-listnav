@@ -1,29 +1,27 @@
-jQuery ListNav
-==============
+# jQuery ListNav
 
-Add a slick "letter-based" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter.
+**Add a slick "letter-based" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter.**
 
 [View the ListNav Demo](http://esteinborn.github.io/jquery-listnav)
 
-Simple Usage:
--------------
-Insert into &lt;Head&gt;:
--------------------------
+### Install using Bower
+
+`bower install jquery-listnav`
+
+## Manual Install
+#### Insert into &lt;Head&gt;:
 <pre><code>&lt;link rel="stylesheet" href="listnav.css"&gt;</code></pre>
 
-Code up your list:
-------------------
+#### Code up your list:
 <pre><code>&lt;ul id="myList"&gt;...&lt;/ul&gt;</code></pre>
 
-Insert before &lt;/body&gt;:
-----------------------------
+#### Insert before &lt;/body&gt;:
 <pre><code>&lt;script src="jquery-listnav-2.4.min.js"&gt;&lt;/script>
 &lt;script&gt;
 	$("#myList").listnav();
 &lt;/script&gt;</code></pre>
 
-Available OPTIONS:
-------------------
+## Options
 <pre><code>$("myList").listnav({
 	initLetter: '',        // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
     includeAll: true,      // Include the ALL button
@@ -38,5 +36,3 @@ Available OPTIONS:
     prefixes: [],          // Set an array of prefixes that should be counted for the prefix and the first word after the prefix ex: ['the', 'a', 'my']
     filterSelector: ''     // Set the filter to a CSS selector rather than the first text letter for each item
 });</code></pre>
-
-Original plugin by iHwy.

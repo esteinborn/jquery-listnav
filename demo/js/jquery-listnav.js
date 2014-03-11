@@ -1,22 +1,18 @@
 /*
-*
 * jQuery listnav plugin
-* Original Version Copyright iHwy, Jack Killpatrick
+*
+* Add a slick "letter-based" navigation bar to all of your lists.
+* Click a letter to quickly filter the list to items that match that letter.
 *
 * Dual licensed under the MIT and GPL licenses:
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-*
 * Version 2.4.0 (02/11/14)
 * Author: Eric Steinborn
-* Compatibility:
-* jQuery 1.3.x through 1.11.0 and jQuery 2
-* This is confirmed compatible with IE6+, FF, Chrome & Safari
+* Compatibility: jQuery 1.3.x through 1.11.0 and jQuery 2
+* Browser Compatibility: IE6+, FF, Chrome & Safari
 * CSS is a little wonky in IE6, just set your listnav class to be 100% width and it works fine.
-*
-* ListNav will create an alphabetical navigation above your list that you can click on to filter
-* your list items and will hide the other letters.
 *
 */
 (function ($) {

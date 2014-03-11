@@ -4,7 +4,7 @@ node_js:
 before_script:
 - npm install -g grunt-cli
 script:
-- grunt prod
+- grunt build
 after_success:
 - chmod -R 777 .travis-build.sh
 - ./.travis-build.sh

@@ -7,7 +7,7 @@ if [ "$AUTHOR" != "Author: Travis-CI <travis@travis-ci.org>" -a "$TRAVIS_PULL_RE
 echo -e "Starting to update GitHub Pages\n"
 
   #copy data we're interested in to other place
-  cp -R dist $HOME/dist
+  cp -R dist $HOME/demo
 
   #go to home and setup git
   cd $HOME
@@ -19,7 +19,7 @@ echo -e "Starting to update GitHub Pages\n"
 
   #go into directory and copy data we're interested in to that directory
   cd gh-pages
-  cp -Rf $HOME/dist/* .
+  cp -Rf $HOME/demo/* .
 
   #add, commit and push files
   git add -f .
