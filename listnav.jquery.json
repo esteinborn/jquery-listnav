@@ -11,10 +11,10 @@
         "navigation",
         "filter"
     ],
-    "version": "2.4.2",
+    "version": "2.4.3",
     "author": {
         "name": "Eric Steinborn",
-        "url": "http://ericsteinborn.com"
+        "email": "esteinborn@gmail.com"
     },
     "maintainers": [
         {
