@@ -1,6 +1,6 @@
 {
   "name": "jquery-listnav",
-  "version": "2.4.0",
+  "version": "2.4.2",
   "dependencies": {
     "jquery": ">=1.3.2"
   },
@@ -15,10 +15,12 @@
   "description": "Add a slick \"letter-based\" navigation bar to all of your lists. Click a letter to quickly filter the list to items that match that letter.",
   "main": "jquery-listnav.js",
   "keywords": [
+    "listnav",
     "list",
-    "navigation",
     "ul",
     "li",
+    "sort",
+    "navigation",
     "filter"
   ],
   "licenses": [

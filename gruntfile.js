@@ -91,9 +91,10 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      js: {
+      demo: {
         files: {
-          'demo/js/jquery-listnav.js': 'jquery-listnav.js'
+          'demo/js/jquery-listnav.js': 'jquery-listnav.js',
+          'demo/': 'scss/**/*'
         }
       }
     }

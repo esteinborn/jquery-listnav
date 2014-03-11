@@ -1,7 +1,7 @@
 {
   "name": "jquery-listnav",
   "title": "jQuery ListNav",
-  "version": "2.4.0",
+  "version": "2.4.2",
   "author": "Eric Steinborn",
   "description": "Add a slick \"letter-based\" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter. Updated for better compatibility with future jQuery versions.",
   "demo": "http://esteinborn.github.io/jquery-listnav",

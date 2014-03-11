@@ -11,7 +11,7 @@
         "navigation",
         "filter"
     ],
-    "version": "2.2",
+    "version": "2.4.2",
     "author": {
         "name": "Eric Steinborn",
         "url": "http://ericsteinborn.com"
@@ -26,7 +26,11 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/esteinborn/jquery-listnav/license.md"
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        {
+            "type": "GPL",
+            "url": "http://www.gnu.org/licenses/gpl.html"
         }
     ],
     "bugs": "https://github.com/esteinborn/jquery-listnav/issues",

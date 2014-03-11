@@ -8,7 +8,7 @@
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-* Version 2.4.0 (02/11/14)
+* Version 2.4.2 (02/11/14)
 * Author: Eric Steinborn
 * Compatibility: jQuery 1.3.x through 1.11.0 and jQuery 2
 * Browser Compatibility: IE6+, FF, Chrome & Safari
