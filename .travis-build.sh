@@ -19,6 +19,7 @@ echo -e "Starting to update GitHub Pages\n"
 
   #go into directory and copy data we're interested in to that directory
   cd gh-pages
+  for i in `ls | grep -v ".git"` ; do rm -rf $i; done; rm .gitignore;
   cp -Rf $HOME/demo/* .
 
   #add, commit and push files
