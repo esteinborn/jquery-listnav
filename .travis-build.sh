@@ -4,9 +4,10 @@ AUTHOR=$(git show -p | grep Author)
 # Check to see if this is a pull request if so skip the test because it was ran during the initial commit.
 if [ "$AUTHOR" != "Author: Travis-CI <travis@travis-ci.org>" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
-echo -e "Starting to update GitHub Pages\n"
+  echo -e "Starting to update GitHub Pages\n\n"
 
   #copy data we're interested in to other place
+  echo -e "Copying new files to a temp folder\n\n"
   cp -R demo $HOME/demo
 
   #go to home and setup git
@@ -15,11 +16,18 @@ echo -e "Starting to update GitHub Pages\n"
   git config --global user.name "Travis"
 
   #using token clone gh-pages branch
+  echo -e "Cloning repo\n\n"
   git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/esteinborn/jquery-listnav.git  gh-pages > /dev/null
 
   #go into directory and copy data we're interested in to that directory
+
+  echo -e "Entering repo folder\n\n"
   cd gh-pages
-  for i in `ls | grep -v ".git"` ; do rm -rf $i; done; rm .gitignore;
+
+  echo -e "Deleting all existing repo content except for .git folder\n\n"
+  find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+
+  echo -e "Copying new files into repo\n\n"
   cp -Rf $HOME/demo/* .
 
   #add, commit and push files
