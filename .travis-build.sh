@@ -25,6 +25,8 @@ if [ "$AUTHOR" != "Author: Travis-CI <travis@travis-ci.org>" -a "$TRAVIS_PULL_RE
   cd gh-pages
 
   echo -e "Deleting all existing repo content except for .git folder\n\n"
+  # The next line came from Stack Overflow, love that site!
+  # http://stackoverflow.com/a/22340057/682288
   find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
 
   echo -e "Copying new files into repo\n\n"
