@@ -1,6 +1,6 @@
 # jQuery ListNav [![Travis Build](https://travis-ci.org/esteinborn/jquery-listnav.png?branch=master)](https://travis-ci.org/esteinborn/jquery-listnav) [![Built with GruntJS](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com)
 
-> jQuery ListNav will add a slick "letter-based" navigation bar to all of your lists. Click a letter to quicky filter the list to items that match that letter.
+> jQuery ListNav will add a slick "letter-based" navigation bar to all of your lists. Click a letter to quickly filter the list to show items that match that letter.
 
 [View the ListNav Demo](http://esteinborn.github.io/jquery-listnav)
 
