@@ -25,7 +25,7 @@
 <pre><code>$("myList").listnav({
 	initLetter: '',        // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
     includeAll: true,      // Include the ALL button
-    incudeOther: false,    // Include a '...' option to filter non-english characters by
+    includeOther: false,    // Include a '...' option to filter non-english characters by
     includeNums: true,     // Include a '0-9' option to filter by
     flagDisabled: true,    // Add a class of 'ln-disabled' to nav items with no content to show
     removeDisabled: false, // Remove those 'ln-disabled' nav items (flagDisabled must be set to true for this to function)
