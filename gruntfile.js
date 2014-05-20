@@ -108,7 +108,8 @@ module.exports = function(grunt) {
       'sass:listnav',
       'csslint',
       'jshint',
-      'copy'
+      'copy',
+      'watch'
     ]);
   });
 
