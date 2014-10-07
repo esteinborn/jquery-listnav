@@ -54,7 +54,7 @@ module.exports = function(grunt) {
           interrupt: true
         },
         files: [
-          'listnav.js'
+          'jquery-listnav.js'
         ],
         tasks: [
           'jshint',
