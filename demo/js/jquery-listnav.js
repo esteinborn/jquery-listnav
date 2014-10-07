@@ -37,7 +37,7 @@
                 id = this.id,
                 $list = $(this),
                 counts = {},
-                allCount = 0,
+                allCount = 0, fullCount = 0,
                 isAll = true,
                 prevLetter = '';
 
@@ -274,7 +274,12 @@
 
             function getLetterCount(el) {
                 if ($(el).hasClass('all')) {
-                    return allCount;
+                    if (opts.dontCount) {
+                        fullCount = allCount - $list.find(opts.dontCount).length;
+                    } else {
+                        fullCount = allCount;
+                    }
+                    return fullCount;
                 } else {
                     el = '.ln-' + $(el).attr('class');
 
