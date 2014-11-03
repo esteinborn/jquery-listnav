@@ -37,3 +37,9 @@
     prefixes: [],          // Set an array of prefixes that should be counted for the prefix and the first word after the prefix ex: ['the', 'a', 'my']
     filterSelector: ''     // Set the filter to a CSS selector rather than the first text letter for each item
 });</code></pre>
+
+# Showcase
+
+The following websites are currently using ListNav to filter their lists:
+
+[Santa Fe College](http://www.sfcollege.edu/az/)

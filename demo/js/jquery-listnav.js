@@ -8,7 +8,7 @@
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-* Version 2.4.6 (10/07/14)
+* Version 2.4.9 (11/03/14)
 * Author: Eric Steinborn
 * Compatibility: jQuery 1.3.x through 1.11.0 and jQuery 2
 * Browser Compatibility: IE6+, FF, Chrome & Safari
@@ -105,7 +105,7 @@
 
                     var cookieLetter = $.cookie(opts.cookieName);
 
-                    if ( cookieLetter !== null ) {
+                    if ( cookieLetter !== null && typeof cookieLetter !== "undefined" ) {
 
                         opts.initLetter = cookieLetter;
 
@@ -281,7 +281,7 @@
                     }
                     return fullCount;
                 } else {
-                    el = '.ln-' + $(el).attr('class');
+                    el = '.ln-' + $(el).attr('class').split(' ')[0];
 
                     if (opts.dontCount) {
                         count = $list.find(el).not(opts.dontCount).length;
@@ -417,7 +417,7 @@
         initLetter: '',
         includeAll: true,
         allText: 'All',
-        incudeOther: false,
+        includeOther: false,
         includeNums: true,
         flagDisabled: true,
         removeDisabled: false,
