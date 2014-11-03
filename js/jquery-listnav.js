@@ -8,7 +8,7 @@
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-* Version 2.4.3 (02/11/14)
+* Version 2.4.9 (11/03/14)
 * Author: Eric Steinborn
 * Compatibility: jQuery 1.3.x through 1.11.0 and jQuery 2
 * Browser Compatibility: IE6+, FF, Chrome & Safari
@@ -23,7 +23,7 @@
             letters = ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-'],
             firstClick = false,
             //detect if you are on a touch device easily.
-            clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
+            clickEventType=((document.ontouchstart!==null)?'click':'touchend');
 
         opts.prefixes = $.map(opts.prefixes, function (n) {
 
@@ -33,11 +33,11 @@
 
         return this.each(function () {
 
-            var $wrapper, $letters, $letterCount,
+            var $wrapper, $letters, $letterCount, left, width, count,
                 id = this.id,
                 $list = $(this),
                 counts = {},
-                allCount = 0,
+                allCount = 0, fullCount = 0,
                 isAll = true,
                 prevLetter = '';
 
@@ -105,7 +105,7 @@
 
                     var cookieLetter = $.cookie(opts.cookieName);
 
-                    if ( cookieLetter !== null ) {
+                    if ( cookieLetter !== null && typeof cookieLetter !== "undefined" ) {
 
                         opts.initLetter = cookieLetter;
 
@@ -274,9 +274,20 @@
 
             function getLetterCount(el) {
                 if ($(el).hasClass('all')) {
-                    return allCount;
+                    if (opts.dontCount) {
+                        fullCount = allCount - $list.find(opts.dontCount).length;
+                    } else {
+                        fullCount = allCount;
+                    }
+                    return fullCount;
                 } else {
-                    var count = counts[$(el).attr('class').split(' ')[0]];
+                    el = '.ln-' + $(el).attr('class').split(' ')[0];
+
+                    if (opts.dontCount) {
+                        count = $list.find(el).not(opts.dontCount).length;
+                    } else {
+                        count = $list.find(el).length;
+                    }
                     return (count !== undefined) ? count : 0; // some letters may not have a count in the hash
                 }
             }
@@ -292,9 +303,9 @@
                     //shows the count above the letter
                     //
                     $('.ln-letters a', $wrapper).mouseover(function () {
-                        var left = $(this).position().left,
-                            width = ($(this).outerWidth()) + 'px',
-                            count = getLetterCount(this);
+                        left = $(this).position().left;
+                        width = ($(this).outerWidth()) + 'px';
+                        count = getLetterCount(this);
 
                         $letterCount.css({
                             left: left,
@@ -406,12 +417,13 @@
         initLetter: '',
         includeAll: true,
         allText: 'All',
-        incudeOther: false,
+        includeOther: false,
         includeNums: true,
         flagDisabled: true,
         removeDisabled: false,
         noMatchText: 'No matching entries',
         showCounts: true,
+        dontCount: '',
         cookieName: null,
         onClick: null,
         prefixes: [],
