@@ -21,6 +21,12 @@
 	$("#myList").listnav();
 &lt;/script&gt;</code></pre>
 
+#### Navigation:
+
+The navigation defaults to being placed directly above your list element. You can place the navigation in a place of your choice by adding to your markup.
+
+<pre><code>&lt;div id="{myList}-nav"&gt;&lt;/div&gt;</code></pre>
+
 ## Options
 <pre><code>$("myList").listnav({
     initLetter: '',        // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
