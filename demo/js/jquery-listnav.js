@@ -113,6 +113,24 @@
 
                 }
 
+                if(window.location.hash) {
+
+                    if( $.inArray(window.location.hash.substring(1), letters) ) {
+
+                        opts.initLetter = window.location.hash.substring(1);
+
+                        $(window).on('popstate', function() {
+
+                            opts.initLetter = window.location.hash.substring(1);
+                            $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).trigger(clickEventType);
+
+                        });
+
+
+                    }
+
+                }
+
                 // decide what to show first
 
                 // Is there an initLetter set, if so, show that letter first
@@ -324,6 +342,10 @@
                         letter = $this.attr('class').split(' ')[0],
                         noMatches = $list.children('.ln-no-match');
 
+                    if(!e.isTrigger) {
+                        window.location.hash = '#' + letter;
+                    }
+
                     if ( prevLetter !== letter ) {
                     // Only to run this once for each click, won't double up if they clicked the same letter
                     // Won't hinder firstRun
@@ -403,7 +425,7 @@
                     if (html.length === 0) {
                         html.push('<a class="all" href="#">'+ opts.allText + '</a><a class="_" href="#">0-9</a>');
                     }
-                    html.push('<a class="' + letters[i] + '" href="#">' + ((letters[i] === '-') ? '...' : letters[i].toUpperCase()) + '</a>');
+                    html.push('<a class="' + letters[i] + '" href="#' + letters[i] + '">' + ((letters[i] === '-') ? '...' : letters[i].toUpperCase()) + '</a>');
                 }
                 return '<div class="ln-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="ln-letter-count listNavHide">0</div>' : '');
                 // Remove inline styles, replace with css class

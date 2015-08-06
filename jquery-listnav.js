@@ -8,7 +8,7 @@
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-* Version 2.4.9 (11/03/14)
+* Version 2.5 (20/07/15)
 * Author: Eric Steinborn
 * Compatibility: jQuery 1.3.x through 1.11.0 and jQuery 2
 * Browser Compatibility: IE6+, FF, Chrome & Safari
@@ -108,6 +108,24 @@
                     if ( cookieLetter !== null && typeof cookieLetter !== "undefined" ) {
 
                         opts.initLetter = cookieLetter;
+
+                    }
+
+                }
+
+                if(window.location.hash) {
+
+                    if( $.inArray(window.location.hash.substring(1), letters) ) {
+
+                        opts.initLetter = window.location.hash.substring(1);
+
+                        $(window).on('popstate', function() {
+
+                            opts.initLetter = window.location.hash.substring(1);
+                            $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).trigger(clickEventType);
+
+                        });
+
 
                     }
 
@@ -324,6 +342,10 @@
                         letter = $this.attr('class').split(' ')[0],
                         noMatches = $list.children('.ln-no-match');
 
+                    if(!e.isTrigger) {
+                        window.location.hash = '#' + letter;
+                    }
+
                     if ( prevLetter !== letter ) {
                     // Only to run this once for each click, won't double up if they clicked the same letter
                     // Won't hinder firstRun
@@ -403,7 +425,7 @@
                     if (html.length === 0) {
                         html.push('<a class="all" href="#">'+ opts.allText + '</a><a class="_" href="#">0-9</a>');
                     }
-                    html.push('<a class="' + letters[i] + '" href="#">' + ((letters[i] === '-') ? '...' : letters[i].toUpperCase()) + '</a>');
+                    html.push('<a class="' + letters[i] + '" href="#' + letters[i] + '">' + ((letters[i] === '-') ? '...' : letters[i].toUpperCase()) + '</a>');
                 }
                 return '<div class="ln-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="ln-letter-count listNavHide">0</div>' : '');
                 // Remove inline styles, replace with css class
