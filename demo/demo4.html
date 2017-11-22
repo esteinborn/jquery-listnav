@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
 	<meta charset="UTF-8">
-	<title>jQuery ListNav Plugin Demo 1</title>
+	<title>jQuery ListNav Plugin Demo 4</title>
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -30,11 +30,18 @@
 </div>
 <div id="main_content_wrap" class="outer">
 	<section id="main_content" class="inner">
-<h2>Demo 1</h2>
-			<h3>The default configuration</h3>
-			<pre><code data-language="javascript">$('#demoOne').listnav();</code></pre>
-			<p>This is the easiest way to use the plugin. None of the default options are overridden and a jQuery ID selector is used to bind the plugin to a single list.</p>
-			<ul id="demoOne" class="demo">
+
+<h2>Demo 4</h2>
+			<h3>Using <code>cookieName</code> to save last click and utilizing an <code>onClick</code> callback</h3>
+			<pre><code data-language="javascript">$('#demoFour').listnav({
+    cookieName: 'ln-demo5',
+    onClick: function(letter) {
+        $(".myLastClicked").text(letter.toUpperCase());
+    }
+});</code></pre>
+			<p>If you include the <a href="https://github.com/carhartl/jquery-cookie">jquery.cookie</a> js file in your page before the listnav js file, you can set the <code>cookieName</code> option to have the listnav control remember your user's last clicked navigation item (the cookie value will be 'all', '_' for numbers 0-9 or a lowercase letter 'a' - 'z'). You can also use the <code>onClick</code> callback to fire a custom function when a letter gets clicked. Click a letter to see the onClick function, then reload the page and come back to Demo 5 and you'll see that the list loads your last clicked letter (obtained from the cookie value).</p>
+<p>You Just Clicked: <span class="myLastClicked" style="font-size:1.5em; color:#FE51A1">?</span></p>
+			<ul id="demoFour" class="demo">
 				<li><a href="#">411 Services</a></li>
 				<li><a href="#">Accountants</a></li>
 				<li><a href="#">Accounting &amp; Bookkeeping - General Service</a></li>
@@ -49,35 +56,14 @@
 				<li><a href="#">Audio Visual Production Service</a></li>
 				<li><a href="#">Automobile - Renting</a></li>
 				<li><a href="#">Automobile - Repair &amp; Service</a></li>
-				<li><a href="#">Banks</a></li>
-				<li><a href="#">Banquet Rooms</a></li>
-				<li><a href="#">Barber Shops</a></li>
-				<li><a href="#">Baseball Clubs</a></li>
-				<li><a href="#">Book Dealers - Used &amp; Rare</a></li>
-				<li><a href="#">Bookbinders</a></li>
-				<li><a href="#">Brake Service</a></li>
-				<li><a href="#">Business - Management Consultants</a></li>
-				<li><a href="#">Business - Services</a></li>
 				<li><a href="#">Cabinet Makers</a></li>
 				<li><a href="#">Cabinets</a></li>
 				<li><a href="#">Cafeterias</a></li>
 				<li><a href="#">Calligraphers</a></li>
 				<li><a href="#">Campgrounds</a></li>
-				<li><a href="#">Cemeteries &amp; Crematories</a></li>
-				<li><a href="#">Ceramic Products - Decorative</a></li>
-				<li><a href="#">Chambers of Commerce</a></li>
-				<li><a href="#">Crane Service</a></li>
-				<li><a href="#">Cruises</a></li>
 				<li><a href="#">Dancing Instruction</a></li>
 				<li><a href="#">Data Communications Equipment &amp; Systems - Networks</a></li>
 				<li><a href="#">Deck Builders</a></li>
-				<li><a href="#">Delivery Service</a></li>
-				<li><a href="#">Dentists</a></li>
-				<li><a href="#">Department Stores</a></li>
-				<li><a href="#">Draperies &amp; Curtains - Retail &amp; Custom Made</a></li>
-				<li><a href="#">Drilling - Companies</a></li>
-				<li><a href="#">Driving - Instruction</a></li>
-				<li><a href="#">Drug - Abuse &amp; Addiction Info &amp; Treatment</a></li>
 				<li><a href="#">Drywall &amp; Insulation Contractors</a></li>
 				<li><a href="#">Earthquake Products &amp; Services</a></li>
 				<li><a href="#">E-Commerce</a></li>
@@ -88,19 +74,6 @@
 				<li><a href="#">Electric Transmission Equipment (Manufacturers)</a></li>
 				<li><a href="#">Electrolysis</a></li>
 				<li><a href="#">Erosion Control</a></li>
-				<li><a href="#">Excavating Contractors</a></li>
-				<li><a href="#">Executive Search Consultants</a></li>
-				<li><a href="#">Exercise &amp; Physical Fitness Programs</a></li>
-				<li><a href="#">Exterminating &amp; Pest Control Services</a></li>
-				<li><a href="#">Fabric Shops</a></li>
-				<li><a href="#">Fabrics (Wholesale)</a></li>
-				<li><a href="#">Facilities Management</a></li>
-				<li><a href="#">Farms</a></li>
-				<li><a href="#">Foundation - Educational Philanthropic Research</a></li>
-				<li><a href="#">Fraternities &amp; Sororities</a></li>
-				<li><a href="#">Games &amp; Game Supplies</a></li>
-				<li><a href="#">Garbage Collection</a></li>
-				<li><a href="#">Garden Centers</a></li>
 				<li><a href="#">Gas - Liquefied Petroleum - Bottled &amp; Bulk (Wholesale)</a></li>
 				<li><a href="#">Guide Service</a></li>
 				<li><a href="#">Gymnastic Instruction</a></li>
@@ -108,20 +81,6 @@
 				<li><a href="#">Handyman Services</a></li>
 				<li><a href="#">Hardware - Retail</a></li>
 				<li><a href="#">Hardwood</a></li>
-				<li><a href="#">Health &amp; Diet Foods - Retail</a></li>
-				<li><a href="#">House &amp; Building Movers</a></li>
-				<li><a href="#">House Cleaning</a></li>
-				<li><a href="#">Human Factors - Research &amp; Development</a></li>
-				<li><a href="#">Human Resource Consultants</a></li>
-				<li><a href="#">Importers</a></li>
-				<li><a href="#">Industrial - Equipment &amp; Supplies (Wholesale)</a></li>
-				<li><a href="#">Internet - Services</a></li>
-				<li><a href="#">Inventors</a></li>
-				<li><a href="#">Investigators</a></li>
-				<li><a href="#">Investment - Management</a></li>
-				<li><a href="#">Investments</a></li>
-				<li><a href="#">Janitor Service</a></li>
-				<li><a href="#">Jewelers (Wholesale)</a></li>
 				<li><a href="#">Jewelers - Retail</a></li>
 				<li><a href="#">Jewelry - Designers</a></li>
 				<li><a href="#">Laboratories</a></li>
@@ -131,41 +90,12 @@
 				<li><a href="#">Lumber (Manufacturers)</a></li>
 				<li><a href="#">Lumber - Retail</a></li>
 				<li><a href="#">Machine Shops</a></li>
-				<li><a href="#">Machinery - Rebuilding &amp; Repairing (Wholesale)</a></li>
-				<li><a href="#">Machinery - Specially Designed &amp; Built</a></li>
-				<li><a href="#">Magicians</a></li>
-				<li><a href="#">Maid &amp; Butler Service</a></li>
-				<li><a href="#">Motorcycles - Supplies &amp; Parts (Manufacturers)</a></li>
-				<li><a href="#">Multimedia (Manufacturers)</a></li>
-				<li><a href="#">Museums</a></li>
-				<li><a href="#">Newspaper - Publishers</a></li>
-				<li><a href="#">Nonclassifiable Establishments</a></li>
-				<li><a href="#">Non-Profit Organizations</a></li>
-				<li><a href="#">Nurseries - Plants &amp; Trees (Wholesale)</a></li>
-				<li><a href="#">Nurserymen</a></li>
-				<li><a href="#">Nutritionists</a></li>
-				<li><a href="#">Paint - Retail</a></li>
-				<li><a href="#">Painters</a></li>
 				<li><a href="#">Parking Area &amp; Lots Maintenance &amp; Marking</a></li>
 				<li><a href="#">Parks</a></li>
 				<li><a href="#">Party Supplies</a></li>
 				<li><a href="#">Patio &amp; Deck Cleaning &amp; Restoration</a></li>
 				<li><a href="#">Paving Contractors</a></li>
 				<li><a href="#">Pumps (Wholesale)</a></li>
-				<li><a href="#">Quilting - Materials &amp; Supplies</a></li>
-				<li><a href="#">Radio Stations &amp; Broadcasting Companies</a></li>
-				<li><a href="#">Railroads</a></li>
-				<li><a href="#">Ranches</a></li>
-				<li><a href="#">Reading Improvement Instruction</a></li>
-				<li><a href="#">Reading Rooms</a></li>
-				<li><a href="#">Real Estate</a></li>
-				<li><a href="#">Real Estate - Appraisers</a></li>
-				<li><a href="#">Real Estate - Consultants</a></li>
-				<li><a href="#">Restaurants</a></li>
-				<li><a href="#">Restaurants - American</a></li>
-				<li><a href="#">Restaurants - Bakeries</a></li>
-				<li><a href="#">Restaurants - Barbecue</a></li>
-				<li><a href="#">Roofing - Materials</a></li>
 				<li><a href="#">Roofing - Service Consultants</a></li>
 				<li><a href="#">Sand &amp; Gravel (Wholesale)</a></li>
 				<li><a href="#">School Supplies (Wholesale)</a></li>
@@ -176,33 +106,14 @@
 				<li><a href="#">Shoes - Retail</a></li>
 				<li><a href="#">Shopping Centers &amp; Malls</a></li>
 				<li><a href="#">Shower Doors &amp; Enclosures</a></li>
-				<li><a href="#">Sunglasses &amp; Sun Goggles (Wholesale)</a></li>
-				<li><a href="#">Surveyors - Land</a></li>
-				<li><a href="#">Tanning Salons</a></li>
-				<li><a href="#">Tattooing</a></li>
-				<li><a href="#">Tax Consultants</a></li>
-				<li><a href="#">Tax Return Preparation &amp; Filing</a></li>
-				<li><a href="#">Technical Manual Preparation</a></li>
-				<li><a href="#">Tools - Electric - Repairing &amp; Parts</a></li>
-				<li><a href="#">Tours - Operators &amp; Promoters</a></li>
 				<li><a href="#">Tutoring</a></li>
 				<li><a href="#">Ultrasonic Equipment &amp; Supplies (Wholesale)</a></li>
 				<li><a href="#">Upholsterers</a></li>
-				<li><a href="#">Utilities - Underground - Cable Locating Service</a></li>
-				<li><a href="#">Vacuum Cleaners - Household - Dealers</a></li>
-				<li><a href="#">Vending Machines</a></li>
-				<li><a href="#">Ventilating Systems - Cleaning</a></li>
-				<li><a href="#">Venture Capital Companies</a></li>
-				<li><a href="#">Vineyards</a></li>
-				<li><a href="#">Vitamin Products (Manufacturers)</a></li>
-				<li><a href="#">Vitamins</a></li>
-				<li><a href="#">Wallpapers &amp; Wallcoverings - Installation</a></li>
 				<li><a href="#">Windows - Repairing</a></li>
 				<li><a href="#">Wineries</a></li>
 				<li><a href="#">Wines - Consultants</a></li>
 				<li><a href="#">Wines - Retail</a></li>
 				<li><a href="#">Woodworkers</a></li>
-				<li><a href="#">Writers</a></li>
 				<li><a href="#">X-Ray - Apparatus &amp; Supplies (Manufacturers)</a></li>
 				<li><a href="#">Yarn - Retail</a></li>
 				<li><a href="#">Yoga Instruction</a></li>
@@ -211,7 +122,6 @@
 				<li><a href="#">Zero</a></li>
 				<li><a href="#">Zilch</a></li>
 			</ul>
-
 	</section>
 </div>
 <div id="footer_wrap" class="outer">
@@ -224,7 +134,13 @@
 <script src="js/vendor.js"></script>
 <script>
 $(function(){
-	$('#demoOne').listnav({initHidden: true});
+	$('#demoFour').listnav({
+		cookieName: 'cookie-demo',
+		includeAll: false,
+		onClick: function(letter) {
+			$(".myLastClicked").text(letter.toUpperCase());
+		}
+	});
 	$('.demo a').click(function(e) {
 		e.preventDefault();
 	});

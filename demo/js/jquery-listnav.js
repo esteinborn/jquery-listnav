@@ -8,11 +8,9 @@
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-* Version 2.4.50 (09/02/2015)
+* Version 3.0.0 (11/22/2017)
 * Author: Eric Steinborn
-* Compatibility: jQuery 1.3.x through 1.11.0 and jQuery 2
-* Browser Compatibility: IE6+, FF, Chrome & Safari
-* CSS is a little wonky in IE6, just set your listnav class to be 100% width and it works fine.
+* Compatibility: jQuery 2.0+
 *
 */
 (function ($) {
@@ -106,10 +104,19 @@
           firstClick = true;
 
           // click the initLetter if there was one
-          $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).trigger(clickEventType);
+          $('.' + opts.initLetter.toLowerCase(), $letters).slice(0, 1).trigger('click');
         } else {
+          // If you want to Hide all options until a user clicks
+          if ( opts.initHidden ) {
+
+            addInitHiddenLI();
+
+            $list.children().addClass("listNavHide");
+
+            $list.children('.ln-init-hidden').removeClass('listNavHide');
+          }
           // If no init letter is set, and you included All, then show it
-          if ( opts.includeAll ) {
+          else if ( opts.includeAll ) {
             // make the All link look clicked, but don't actually click it
             $('.all', $letters).addClass('ln-selected');
           } else {
@@ -118,7 +125,7 @@
               if ( counts[letters[i]] > 0 ) {
                 firstClick = true;
 
-                $('.' + letters[i], $letters).slice(0, 1).trigger(clickEventType);
+                $('.' + letters[i], $letters).slice(0, 1).trigger('click');
 
                 break;
               }
@@ -229,6 +236,10 @@
         $list.append('<li class="ln-no-match listNavHide">' + opts.noMatchText + '</li>');
       }
 
+      function addInitHiddenLI() {
+        $list.append('<li class="ln-init-hidden listNavHide">' + opts.initHiddenText + '</li>');
+      }
+
       function getLetterCount(el) {
         if ($(el).hasClass('all')) {
           if (opts.dontCount) {
@@ -276,11 +287,15 @@
 
         // click handler for letters: shows/hides relevant LI's
         //
-        $('a', $letters).bind(clickEventType, function (e) {
+        $('a', $letters).on(clickEventType, function (e) {
           e.preventDefault();
           var $this = $(this),
             letter = $this.attr('class').split(' ')[0],
             noMatches = $list.children('.ln-no-match');
+
+          if ( opts.initHidden ) {
+            $list.children('.ln-init-hidden').remove();
+          }
 
           if ( prevLetter !== letter ) {
           // Only to run this once for each click, won't double up if they clicked the same letter
@@ -355,6 +370,8 @@
   };
 
   $.fn.listnav.defaults = {
+    initHidden: false,
+    initHiddenText: 'Tap a letter above to view matching items',
     initLetter: '',
     includeAll: true,
     allText: 'All',

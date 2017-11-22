@@ -11,7 +11,7 @@
         "navigation",
         "filter"
     ],
-    "version": "2.4.10",
+    "version": "3.0.0",
     "author": {
         "name": "Eric Steinborn",
         "email": "esteinborn@gmail.com"
@@ -37,6 +37,6 @@
     "homepage": "http://esteinborn.github.io/jquery-listnav",
     "docs": "https://github.com/esteinborn/jquery-listnav",
     "dependencies": {
-        "jquery": ">=1.3"
+        "jquery": ">=3.0.0"
     }
 }

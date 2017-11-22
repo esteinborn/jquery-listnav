@@ -42,11 +42,10 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
         files: [
-          'scss/**/*.scss'
+          '**/*.scss'
         ],
         tasks: [
-          'sass:listnav',
-          'csslint'
+          'sass'
         ]
       },
       scripts: {
@@ -58,23 +57,16 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'jshint',
+          'uglify',
           'copy'
         ]
 			}
 		},
-		csslint: {
-			css: {
-				options: {
-					import: 2
-				},
-				src: ['css/listnav.css']
-			},
-		},
     sass: {
       listnav: {
         options: {
-          outputStyle: 'compressed',
-          sourceComments: 'map'
+          outputStyle: 'expanded',
+          sourceMap: true
         },
         files: {
           'css/listnav.css': 'scss/listnav.scss',
@@ -83,7 +75,8 @@ module.exports = function(grunt) {
       },
       demo: {
         options: {
-          outputStyle: 'compressed'
+          outputStyle: 'expanded',
+          sourceMap: true
         },
         files: {
           'demo/css/demo.css': 'demo/scss/stylesheet.scss'
@@ -105,9 +98,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', 'Development build', function(args) {
     grunt.task.run([
-      'sass:listnav',
-      'csslint',
+      'sass',
       'jshint',
+      'uglify',
       'copy',
       'watch'
     ]);

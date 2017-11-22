@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery ListNav Plugin Demo 3</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="jQuery ListNav Plugin : A jQuery plugin that creates an alphabetical navigation filter for your lists, By Eric Steinborn">
+	<link rel="stylesheet" href="css/demo.css">
+	<link rel="stylesheet" href="css/listnav.css">
+</head>
+<body>
+<div id="header_wrap" class="outer">
+	<header class="inner">
+		<h1 id="project_title">jQuery ListNav Plugin</h1>
+		<h2 id="project_tagline">Create a world of alphabetical navigation filters one list at a time!</h2>
+		<nav>
+			<ul>
+				<li><a href="index.html">Demo 1</a></li>
+				<li><a href="demo2.html">Demo 2</a></li>
+				<li><a href="demo3.html">Demo 3</a></li>
+				<li><a href="demo4.html">Demo 4</a></li>
+				<li><a href="demo5.html">Demo 5</a></li>
+				<li><a href="demo6.html">Demo 6</a></li>
+				<li><a href="https://github.com/esteinborn/jquery-listnav/blob/master/README.md#options">Usage</a></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+<div id="main_content_wrap" class="outer">
+	<section id="main_content" class="inner">
+
+		<h2>Demo 3</h2>
+			<h3>Style your lists however you want!</h3>
+			<pre><code data-language="javascript">$('#demoThree').listnav({
+    initLetter: 'c',
+    includeNums: false
+});</code></pre>
+			<p>The <code>initLetter</code> option is set to letter 'c', which forces the list to load with that letter selected.</p>
+			<p>The 0-9 number navigation item is hidden by the <code>includeNums:false</code> option.</p>
+			<div class="listWrapper">
+				<ul id="demoThree" class="demo">
+					<li><a href="#">Agizzy</a></li>
+					<li><a href="#">Aiboo</a></li>
+					<li><a href="#">Avazu</a></li>
+					<li><a href="#">Babbletype</a></li>
+					<li><a href="#">BrowseZ</a></li>
+					<li><a href="#">Camiba</a></li>
+					<li><a href="#">Centilia</a></li>
+					<li><a href="#">Centixo</a></li>
+					<li><a href="#">Chatterbean</a></li>
+					<li><a href="#">Chatvine</a></li>
+					<li><a href="#">Dabster</a></li>
+					<li><a href="#">Dazzleblab</a></li>
+					<li><a href="#">Dazzleclub</a></li>
+					<li><a href="#">Demivee</a></li>
+					<li><a href="#">Devopia</a></li>
+					<li><a href="#">Eaxo</a></li>
+					<li><a href="#">Edgedrive</a></li>
+					<li><a href="#">Edgenation</a></li>
+					<li><a href="#">Fadeo</a></li>
+					<li><a href="#">Feedbird</a></li>
+					<li><a href="#">Fivecat</a></li>
+					<li><a href="#">Flipspot</a></li>
+					<li><a href="#">Innobird</a></li>
+					<li><a href="#">Inte</a></li>
+					<li><a href="#">Jabberspot</a></li>
+					<li><a href="#">Jabberverse</a></li>
+					<li><a href="#">Jumplist</a></li>
+					<li><a href="#">Kaype</a></li>
+					<li><a href="#">Meendo</a></li>
+					<li><a href="#">Meente</a></li>
+					<li><a href="#">Meetz</a></li>
+					<li><a href="#">Muba</a></li>
+					<li><a href="#">Ombee</a></li>
+					<li><a href="#">Oope</a></li>
+					<li><a href="#">Podtune</a></li>
+					<li><a href="#">Quiyo</a></li>
+					<li><a href="#">Rifffire</a></li>
+					<li><a href="#">Riffmix</a></li>
+					<li><a href="#">Tagtube</a></li>
+					<li><a href="#">Tandu</a></li>
+					<li><a href="#">Tekpad</a></li>
+					<li><a href="#">Tekware</a></li>
+					<li><a href="#">Topbug</a></li>
+					<li><a href="#">Trunti</a></li>
+					<li><a href="#">Twitterspot</a></li>
+					<li><a href="#">Voonte</a></li>
+					<li><a href="#">Wikible</a></li>
+					<li><a href="#">Wikidel</a></li>
+					<li><a href="#">Wikindo</a></li>
+					<li><a href="#">Yondo</a></li>
+					<li><a href="#">Yotz</a></li>
+					<li><a href="#">Zoomworks</a></li>
+				</ul>
+			</div>
+
+	</section>
+</div>
+<div id="footer_wrap" class="outer">
+	<footer class="inner">
+		<p class="copyright">jQuery ListNav Plugin maintained by <a href="http://ericsteinborn.com" title="Eric Steinborn">Eric Steinborn</a></p>
+	</footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/jquery-listnav.js"></script>
+<script src="js/vendor.js"></script>
+<script>
+$(function(){
+	$('#demoThree').listnav({
+		initLetter: 'c',
+		includeNums: false
+	});
+	$('.demo a').click(function(e) {
+		e.preventDefault();
+	});
+});
+</script>
+</body>
+</html>

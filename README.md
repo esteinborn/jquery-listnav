@@ -29,9 +29,11 @@ The navigation defaults to being placed directly above your list element. You ca
 
 ## Options
 <pre><code>$("myList").listnav({
+    initHidden: false,     // After LiatNav loads, hide all of the list items until you click a letter
+    initHiddenText: 'Tap a letter above to view matching items', // Message to display to users when the initial input is hidden
     initLetter: '',        // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
     includeAll: true,      // Include the ALL button
-    includeOther: false,    // Include a '...' option to filter non-english characters by
+    includeOther: false,   // Include a '...' option to filter non-english characters by
     includeNums: true,     // Include a '0-9' option to filter by
     flagDisabled: true,    // Add a class of 'ln-disabled' to nav items with no content to show
     removeDisabled: false, // Remove those 'ln-disabled' nav items (flagDisabled must be set to true for this to function)
