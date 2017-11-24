@@ -10,10 +10,8 @@ if [ "$AUTHOR" != "Author: Travis-CI <travis@travis-ci.org>" -a "$TRAVIS_PULL_RE
   echo -e "Copying new files to a temp folder\n"
   cp -R demo $HOME/demo
 
-  #go to home and setup git
+  #go to home
   cd $HOME
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis"
 
   #using token clone gh-pages branch
   echo -e "Cloning repo\n"

@@ -1,14 +1,19 @@
 sudo: false
 language: node_js
 node_js:
-- 0.11
+  - 0.11
 before_script:
-- npm install -g grunt-cli
+  - npm install -g grunt-cli
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis-CI"
 script:
-- grunt build
+  - grunt build
+after_script:
+  - git config credential.helper "store --file=.git/credentials"
+  - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 after_success:
-- chmod -R 777 .travis-build.sh
-- ./.travis-build.sh
+  - chmod -R 777 .travis-build.sh
+  - ./.travis-build.sh
 env:
   global:
     secure: OJbAIG1yFzfU7JTNDzCVxU9+33MjduhvWFkEsIPoUmLe/reKPug11OIFBAnriX7KVnlGBQ8oNIeN5n0o0rZN9FLLSEVGXAviT0BMCnEzJraCFOjrYW6Hf2dPIyuEIzopIVfY9hTXmOJcUstyx3//Iu0pWG/5+StyvK4dK7nR3Kk=
