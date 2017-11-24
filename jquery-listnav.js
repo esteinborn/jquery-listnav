@@ -219,7 +219,6 @@
         if (!isPrefix) {
           allCount++;
         }
-
       }
 
       function addDisabledClass() {
