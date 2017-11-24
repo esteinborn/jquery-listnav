@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery ListNav Plugin Demo 5</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="jQuery ListNav Plugin : A jQuery plugin that creates an alphabetical navigation filter for your lists, By Eric Steinborn">
+	<link rel="stylesheet" href="css/demo.css">
+	<link rel="stylesheet" href="css/listnav.css">
+</head>
+<body>
+<div id="header_wrap" class="outer">
+	<header class="inner">
+		<h1 id="project_title">jQuery ListNav Plugin</h1>
+		<h2 id="project_tagline">Create a world of alphabetical navigation filters one list at a time!</h2>
+		<nav>
+			<ul>
+				<li><a href="index.html">Demo 1</a></li>
+				<li><a href="demo2.html">Demo 2</a></li>
+				<li><a href="demo3.html">Demo 3</a></li>
+				<li><a href="demo4.html">Demo 4</a></li>
+				<li><a href="demo5.html">Demo 5</a></li>
+				<li><a href="demo6.html">Demo 6</a></li>
+				<li><a href="https://github.com/esteinborn/jquery-listnav/blob/master/README.md#options">Usage</a></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+<div id="main_content_wrap" class="outer">
+	<section id="main_content" class="inner">
+
+<h2>Demo 5</h2>
+			<h3>Using the <code>includeOther</code> and <code>prefixes</code> options</h3>
+			<pre><code data-language="javascript">$('#demoFive').listnav({
+    includeOther: true,
+    prefixes: ['a', 'The Complete Works of']
+});</code></pre>
+			<p>Use the <code>includeOther</code> option to show a [...] navigation item for access to list items that start with something other than A-Z and 0-9 (such as Ä and Ü). If you'd like something like "The Valley News" or "The Willows Journal" to appear under V and W as well as under T, supply an array of prefixes using the <code>prefixes</code> option.</p>
+			<p>You can also ignore <b>multi word prefixes</b> to titles with <code>prefixes</code> (EX: "J" &amp; "S")</p>
+			<p><strong>Note:</strong> <code>prefixes</code> will not iterate the "ALL" count twice.</p>
+			<ul id="demoFive" class="demo">
+				<li><a href="#">Äpfel</a></li>
+				<li><a href="#">Über alle</a></li>
+				<li>A Story About Something</li>
+				<li><a href="#">Alameda Sun</a></li>
+				<li><a href="#">Argus Online</a></li>
+				<li><a href="#">Atascadero News</a></li>
+				<li><a href="#">Auburn Journal</a></li>
+				<li><a href="#">Bakersfield Californian</a></li>
+				<li><a href="#">Business Times</a></li>
+				<li><a href="#">Calaveras Enterprise</a></li>
+				<li><a href="#">Californian</a></li>
+				<li><a href="#">Cronicas</a></li>
+				<li><a href="#">Culver City Observer</a></li>
+				<li><a href="#">Daily Breeze</a></li>
+				<li><a href="#">Daily Triplicate</a></li>
+				<li><a href="#">Davis Enterprise</a></li>
+				<li><a href="#">Desert Dispatch</a></li>
+				<li><a href="#">Desert Sun</a></li>
+				<li><a href="#">Eagle and Times</a></li>
+				<li><a href="#">East Bay Express</a></li>
+				<li><a href="#">Elk Grove Citizen</a></li>
+				<li><a href="#">Feather River Bulletin</a></li>
+				<li><a href="#">Free Lance</a></li>
+				<li><a href="#">Fresno Bee</a></li>
+				<li><a href="#">Galt Herald</a></li>
+				<li><a href="#">Gridley Herald</a></li>
+				<li><a href="#">Grunion Gazette</a></li>
+				<li><a href="#">Holtville Tribune</a></li>
+				<li><a href="#">Humboldt Beacon</a></li>
+				<li><a href="#">Idyllwild Town Crier</a></li>
+				<li><a href="#">Imperial Valley Press Online</a></li>
+				<li><a href="#">Investor's Business Daily</a></li>
+				<li><a href="#">Jackson Ledger-Dispatch</a></li>
+				<li><a href="#">Jewish Observer</a></li>
+				<li><a href="#">Kern Valley Sun</a></li>
+				<li><a href="#">King City Rustler</a></li>
+				<li><a href="#">Kingsburg Recorder</a></li>
+				<li><a href="#">L.A. Weekly</a></li>
+				<li><a href="#">Loomis News</a></li>
+				<li><a href="#">Los Banos Enterprise</a></li>
+				<li><a href="#">Los Gatos Observer</a></li>
+				<li><a href="#">Mountain View Voice</a></li>
+				<li><a href="#">Napa Valley Register</a></li>
+				<li><a href="#">North County Times</a></li>
+				<li><a href="#">Novato Advance</a></li>
+				<li><a href="#">Oakdale Leader</a></li>
+				<li><a href="#">Oroville Mercury-Register</a></li>
+				<li><a href="#">Pacific Sun</a></li>
+				<li><a href="#">Press Democrat</a></li>
+				<li><a href="#">Press Telegram</a></li>
+				<li><a href="#">Press Tribune</a></li>
+				<li><a href="#">Press-Enterprise</a></li>
+				<li><a href="#">Ramona Journal</a></li>
+				<li><a href="#">Ripon Record</a></li>
+				<li><a href="#">Riverside County Record News</a></li>
+				<li><a href="#">Rocklin &amp; Roseville Today</a></li>
+				<li><a href="#">Sacramento Bee</a></li>
+				<li><a href="#">Sonoma Valley Sun</a></li>
+				<li><a href="#">Studio City Sun</a></li>
+				<li><a href="#">Tehachapi News</a></li>
+				<li><a href="#">The Acorn</a></li>
+				<li><a href="#">The Adobe Press</a></li>
+				<li><a href="#">The Alpine Sun</a></li>
+				<li><a href="#">The Ark</a></li>
+				<li><a href="#">The Camarillo Acorn</a></li>
+				<li><a href="#">The Ceres Courier</a></li>
+				<li><a href="#">The Chino Champion</a></li>
+				<li><a href="#">The Claremont Courier</a></li>
+				<li><a href="#">The Complete Works of Shakespeare</a></li>
+				<li><a href="#">The Complete Works of Joe Blogs</a></li>
+				<li><a href="#">The Coast News</a></li>
+				<li><a href="#">The Daily Democrat</a></li>
+				<li><a href="#">The Daily Press</a></li>
+				<li><a href="#">The Delhi Express</a></li>
+				<li><a href="#">The Desert Trail</a></li>
+				<li><a href="#">The Dispatch</a></li>
+				<li><a href="#">The Escalon Times</a></li>
+				<li><a href="#">The Foothills Paper</a></li>
+				<li><a href="#">The Foothills Sun Gazette</a></li>
+				<li><a href="#">The Gilroy Dispatch</a></li>
+				<li><a href="#">The Inyo Register</a></li>
+				<li><a href="#">The Mid-County Post</a></li>
+				<li><a href="#">The Record</a></li>
+				<li><a href="#">The Reporter</a></li>
+				<li><a href="#">The River Valley Times</a></li>
+				<li><a href="#">The Valley News</a></li>
+				<li><a href="#">The Valley Post</a></li>
+				<li><a href="#">The Village News</a></li>
+				<li><a href="#">The Willows Journal</a></li>
+				<li><a href="#">Tulare Advance-Register</a></li>
+				<li><a href="#">Turlock Journal</a></li>
+				<li><a href="#">Ukiah Daily Journal</a></li>
+				<li><a href="#">Union</a></li>
+				<li><a href="#">Union Democrat</a></li>
+				<li><a href="#">Vallejo Times-Herald</a></li>
+				<li><a href="#">Valley Springs News</a></li>
+				<li><a href="#">Ventura County Reporter</a></li>
+				<li><a href="#">Ventura County Star</a></li>
+				<li><a href="#">Village News</a></li>
+				<li><a href="#">Visalia Times-Delta</a></li>
+				<li><a href="#">Whittier Daily News</a></li>
+				<li><a href="#">Willits News</a></li>
+				<li><a href="#">Winters Express</a></li>
+				<li><a href="#">X-Ray - Apparatus &amp; Supplies (Manufacturers)</a></li>
+				<li><a href="#">Yarn - Retail</a></li>
+				<li><a href="#">Yoga Instruction</a></li>
+				<li><a href="#">Youth Organizations &amp; Centers</a></li>
+				<li><a href="#">Zuul</a></li>
+				<li><a href="#">Zero</a></li>
+				<li><a href="#">Zilch</a></li>
+			</ul>
+	</section>
+</div>
+<div id="footer_wrap" class="outer">
+	<footer class="inner">
+		<p class="copyright">jQuery ListNav Plugin maintained by <a href="http://ericsteinborn.com" title="Eric Steinborn">Eric Steinborn</a></p>
+	</footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/jquery-listnav.js"></script>
+<script src="js/vendor.js"></script>
+<script>
+$(function(){
+	$('#demoFive').listnav({
+		includeOther: true,
+		prefixes: ['a', 'The Complete Works of']
+	});
+	$('.demo a').click(function(e) {
+		e.preventDefault();
+	});
+});
+</script>
+</body>
+</html>

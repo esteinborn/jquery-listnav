@@ -251,12 +251,12 @@ a {
 
 #main_content a:hover {
   color: #0069ba;
-  text-shadow: #0090ff 0px 0px 1px;
+  // text-shadow: #0090ff 0px 0px 1px;
 }
 
 footer a:hover {
   color: #43adff;
-  text-shadow: #0090ff 0px 0px 2px;
+  // text-shadow: #0090ff 0px 0px 2px;
 }
 
 em {
@@ -326,7 +326,6 @@ ul, ol, dl {
 
 ul li {
   list-style: inside;
-  padding-left: 20px;
 }
 
 ol li {
@@ -481,7 +480,7 @@ z-index: 3;
 }
 
 #main_content_wrap {
-  background: #f2f2f2;
+  background: #fff;
   border-top: 1px solid #111;
   border-bottom: 1px solid #111;
 }
@@ -563,6 +562,48 @@ Custom Styles
   color:#333;
 }
 
+nav {
+  background: #eee;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+  }
+
+  li {
+    list-style-type: none;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+
+  a {
+    border-top: 5px solid #eee;
+    border-bottom: 5px solid #eee;
+    padding: 1.25rem 0.5rem;
+    font-size: 16px;
+    max-width: 140px;
+    font-weight: 400;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    color: #222;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      // background: #ccc;
+      color: black;
+      // text-decoration: underline;
+      border-top: 5px solid #CCC;
+      border-bottom: 5px solid #CCC;
+    }
+  }
+}
 
 
 /*******************************************************************************
@@ -570,9 +611,6 @@ Small Device Styles
 *******************************************************************************/
 
 @media screen and (max-width: 480px) {
-  body {
-    font-size:14px;
-  }
 
   #downloads {
     display: none;

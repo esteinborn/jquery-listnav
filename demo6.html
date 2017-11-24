@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery ListNav Plugin Demo 6</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="jQuery ListNav Plugin : A jQuery plugin that creates an alphabetical navigation filter for your lists, By Eric Steinborn">
+	<link rel="stylesheet" href="css/demo.css">
+	<link rel="stylesheet" href="css/listnav.css">
+</head>
+<body>
+<div id="header_wrap" class="outer">
+	<header class="inner">
+		<h1 id="project_title">jQuery ListNav Plugin</h1>
+		<h2 id="project_tagline">Create a world of alphabetical navigation filters one list at a time!</h2>
+		<nav>
+			<ul>
+				<li><a href="index.html">Demo 1</a></li>
+				<li><a href="demo2.html">Demo 2</a></li>
+				<li><a href="demo3.html">Demo 3</a></li>
+				<li><a href="demo4.html">Demo 4</a></li>
+				<li><a href="demo5.html">Demo 5</a></li>
+				<li><a href="demo6.html">Demo 6</a></li>
+				<li><a href="https://github.com/esteinborn/jquery-listnav/blob/master/README.md#options">Usage</a></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+<div id="main_content_wrap" class="outer">
+	<section id="main_content" class="inner">
+<h2>Demo 6</h2>
+			<h3>Specify a <code>filterSelector</code> and removing links with <code>removeDisabled</code></h3>
+			<pre><code data-language="javascript">$('#demoSix').listnav({
+    filterSelector: '.last-name',
+    includeNums: false,
+    removeDisabled: true,
+    allText: 'Complete Cast of Star Trek TNG'
+});</code></pre>
+			<p>Below you'll find a list of the Star Trek TNG Cast "generated" by a CMS. While you wanted to filter by last name it generated the first name fields first...</p>
+			<p>using <code>filterSelector</code> you can specify a css selector for your navigation to filter by! You can also remove letters that have no content by setting <code>removeDisabled: true</code></p>
+			<p>In this demo, each LI contains a hidden div with <code>class="last-name"</code>
+				<br>So setting <code>filterSelector: '.last-name'</code> lets us filter the list using that CSS selector.</p>
+			<p><strong>NOTE:</strong> <code>filterSelector</code> will accept any valid CSS selector.</p>
+			<p>You can also set <code>allText</code> to a string to override the default text of "All."</p>
+			<ul id="demoSix" class="demo imageList">
+				<li>
+					<img src="images/crusher.png" width="120" height="90">
+					<h2><a href="#">Beverly Crusher</a></h2>
+					<p class="last-name">Crusher</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>Oct. 13, 2324<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Copernicus City, Luna<span></p>
+				</li>
+				<li>
+					<img src="images/crusher-w.png" width="120" height="90">
+					<h2><a href="#">Wesley Crusher</a></h2>
+					<p class="last-name">Crusher</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Ensign<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>July 29, 2349<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Earth<span></p>
+				</li>
+				<li>
+					<img src="images/data.png" width="120" height="90">
+					<h2><a href="#">Data</a></h2>
+					<p class="last-name">Data</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Lieutenant Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>Feb. 2, 2338<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Omicron Theta science colony<span></p>
+				</li>
+				<li>
+					<img src="images/geordi.png" width="120" height="90">
+					<h2><a href="#">Geordi La Forge</a></h2>
+					<p class="last-name">La Forge</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>Feb. 16, 2335<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>African Confederation, Earth<span></p>
+				</li>
+				<li>
+					<img src="images/picard.png" width="120" height="90">
+					<h2><a href="#">Jean Luc Picard</a></h2>
+					<p class="last-name">Picard</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Captain<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>July 13, 2305<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Labarre, France, Earth<span></p>
+				</li>
+				<li>
+					<img src="images/riker.png" width="120" height="90">
+					<h2><a href="#">William Riker</a></h2>
+					<p class="last-name">Riker</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Captain<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>August 19, 2335<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Valdez, Alaska, Earth<span></p>
+				</li>
+				<li>
+					<img src="images/troi.png" width="120" height="90">
+					<h2><a href="#">Deanna Troi</a></h2>
+					<p class="last-name">Troi</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>March 29, 2336 (Terran equivalent)<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Near Lake El-Nar, Betazed<span></p>
+				</li>
+				<li>
+					<img src="images/worf.png" width="120" height="90">
+					<h2><a href="#">Worf</a></h2>
+					<p class="last-name">Worf</p>
+					<p><span><strong>Rank:</strong>&nbsp;</span><span>Lieutenant Commander<span></p>
+					<p><span><strong>Date of Birth:</strong>&nbsp;</span><span>December 9, 2340 (Terran equivalent)<span></p>
+					<p><span><strong>Place of Birth:</strong>&nbsp;</span><span>Qo'noS, Klingon Empire<span></p>
+				</li>
+			</ul>
+	</section>
+</div>
+<div id="footer_wrap" class="outer">
+	<footer class="inner">
+		<p class="copyright">jQuery ListNav Plugin maintained by <a href="http://ericsteinborn.com" title="Eric Steinborn">Eric Steinborn</a></p>
+	</footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/jquery-listnav.js"></script>
+<script src="js/vendor.js"></script>
+<script>
+$(function(){
+	$('#demoSix').listnav({
+		filterSelector: '.last-name',
+		includeNums: false,
+		removeDisabled: true,
+		allText: 'Complete Cast of Star Trek TNG'
+	});
+	$('.demo a').click(function(e) {
+		e.preventDefault();
+	});
+});
+</script>
+</body>
+</html>

@@ -1,30 +1,134 @@
 /* demo-specific */
 
-#demoThree-nav .ln-letters a { border:none; border-top:2px solid pink; color:red; }
-#demoThree-nav .ln-letters a.ln-last { border-right:none; }
+#demoThree-nav .ln-letters a {
+  border: none;
+  border-top: 2px solid pink;
+  color: red;
+}
+
+#demoThree-nav .ln-letters a.ln-last {
+  border-right: none;
+}
+
 #demoThree-nav .ln-letters a:hover,
-#demoThree-nav .ln-letters a.ln-selected { border-top:2px solid red; background-color:pink; color:White !important; }
-#demoThree-nav .ln-letters a.ln-disabled { color:pink; }
-#demoThree-nav .ln-letters a.ln-disabled:hover { color:white; }
-#demoThree-nav .ln-letter-count { color:red; }
+#demoThree-nav .ln-letters a.ln-selected {
+  border-top: 2px solid red;
+  background-color: pink;
+  color: White !important;
+}
 
-#demoThree li { color:pink; }
-#demoThree li a { color:red; text-decoration:none; }
-#demoThree li a:hover { text-decoration:underline;}
+#demoThree-nav .ln-letters a.ln-disabled {
+  color: pink;
+}
 
-#demoFour, .listWrapper { width:650px; overflow:hidden; }
-#demoFour li { float:left; list-style: none; }
-#demoFour a { display:block; text-align:center; width:85px; border:1px solid silver; padding:10px; margin:0 10px 10px 0; text-decoration:none }
-#demoFour a:hover { background-color:#eee; color:pink;}
+#demoThree-nav .ln-letters a.ln-disabled:hover {
+  color: white;
+}
+
+#demoThree-nav .ln-letter-count {
+  color: red;
+}
+
+#demoThree li {
+  color: pink;
+}
+
+#demoThree li a {
+  color: red;
+  text-decoration: none;
+}
+
+#demoThree li a:hover {
+  text-decoration: underline;
+}
+
+#demoFour,
+.listWrapper {
+  overflow: hidden;
+}
+
+#demoFour li {
+  float: left;
+  list-style: none;
+}
+
+#demoFour a {
+  display: block;
+  text-align: center;
+  width: 85px;
+  border: 1px solid silver;
+  padding: 10px;
+  margin: 0 10px 10px 0;
+  text-decoration: none
+}
+
+#demoFour a:hover {
+  background-color: #eee;
+  color: pink;
+}
+
 
 /* #demoSeven */
-.imageList {width:550px;}
-.imageList img, .imageList h2, .imageList p {float:left;}
-.imageList img {text-align: right; margin-right: 20px; margin-top:15px;}
-.imageList p, .imageList h2 {width: 360px;}
-.imageList li {list-style-type: none; overflow: hidden; padding:1em 0 1em 1em; -webkit-border-radius: 4px; border-radius: 4px; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;}
-.imageList li:hover {background-color:#eff1f9; cursor: pointer;  -webkit-box-shadow: 0px 0px 2px 0px #bababa; box-shadow: 0px 0px 5px 0px #BBB;}
-.imageList h2, .imageList p {background:none; padding-bottom:0; margin: 0;}
-.imageList a {text-decoration: none; color: #039;}
-.last-name {display:none;}
-.clearfix::after { content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+
+.imageList {
+  width: 550px;
+}
+
+.imageList img,
+.imageList h2,
+.imageList p {
+  float: left;
+}
+
+.imageList img {
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.imageList p,
+.imageList h2 {
+  width: 360px;
+}
+
+.imageList li {
+  list-style-type: none;
+  overflow: hidden;
+  padding: 1em 0 1em 1em;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.imageList li:hover {
+  background-color: #eff1f9;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 2px 0px #bababa;
+  box-shadow: 0px 0px 5px 0px #BBB;
+}
+
+.imageList h2,
+.imageList p {
+  background: none;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.imageList a {
+  text-decoration: none;
+  color: #039;
+}
+
+.last-name {
+  display: none;
+}
+
+.clearfix::after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
