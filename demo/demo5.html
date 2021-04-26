@@ -32,33 +32,35 @@
 	<section id="main_content" class="inner">
 
 <h2>Demo 5</h2>
-			<h3>Using the <code>includeOther</code> and <code>prefixes</code> options</h3>
+			<h3>Using the <code>includeOther</code> <code>prefixes</code>, and <code>letters</code> options</h3>
 			<pre><code data-language="javascript">$('#demoFive').listnav({
     includeOther: true,
+	letters: ['_', 'a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'i', 'ı', 'j', 'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'q', 'r', 's', 'ş', 't', 'u', 'ü','v', 'w', 'x', 'y', 'z', '-']
     prefixes: ['a', 'The Complete Works of']
 });</code></pre>
-			<p>Use the <code>includeOther</code> option to show a [...] navigation item for access to list items that start with something other than A-Z and 0-9 (such as Ä and Ü). If you'd like something like "The Valley News" or "The Willows Journal" to appear under V and W as well as under T, supply an array of prefixes using the <code>prefixes</code> option.</p>
-			<p>You can also ignore <b>multi word prefixes</b> to titles with <code>prefixes</code> (EX: "J" &amp; "S")</p>
-			<p><strong>Note:</strong> <code>prefixes</code> will not iterate the "ALL" count twice.</p>
+			<p>Use the <code>includeOther</code> option to show a [...] navigation item for access to list items that start with something other than A-Z and 0-9.</p>
+			<p>Use the <code>prefixes</code> option if you'd like to unlink items from their starting letter, (EX: "The Complete Works of" or "A Story About" would list under the next letter)</p>
+			<p>Use the <code>letter</code> option to add custom non-english characters to the list. (EX: this demo filters for Turkish characters)</p>
 			<ul id="demoFive" class="demo">
-				<li><a href="#">Äpfel</a></li>
-				<li><a href="#">Über alle</a></li>
-				<li>A Story About Something</li>
+				<li><a href="#">A Story About Something</a></li>
 				<li><a href="#">Alameda Sun</a></li>
 				<li><a href="#">Argus Online</a></li>
 				<li><a href="#">Atascadero News</a></li>
 				<li><a href="#">Auburn Journal</a></li>
 				<li><a href="#">Bakersfield Californian</a></li>
-				<li><a href="#">Business Times</a></li>
+				<li><a href="#">A Story About Business Times</a></li>
 				<li><a href="#">Calaveras Enterprise</a></li>
 				<li><a href="#">Californian</a></li>
 				<li><a href="#">Cronicas</a></li>
 				<li><a href="#">Culver City Observer</a></li>
+				<li><a href="#">ÇANAK Tabak</a></li>
+				<li><a href="#">ÇAPUT Eski bez parçası</a></li>
+				<li><a href="#">ÇALIM Fiyaka</a></li>
 				<li><a href="#">Daily Breeze</a></li>
 				<li><a href="#">Daily Triplicate</a></li>
 				<li><a href="#">Davis Enterprise</a></li>
 				<li><a href="#">Desert Dispatch</a></li>
-				<li><a href="#">Desert Sun</a></li>
+				<li><a href="#">A Story About Desert Sun</a></li>
 				<li><a href="#">Eagle and Times</a></li>
 				<li><a href="#">East Bay Express</a></li>
 				<li><a href="#">Elk Grove Citizen</a></li>
@@ -66,7 +68,7 @@
 				<li><a href="#">Free Lance</a></li>
 				<li><a href="#">Fresno Bee</a></li>
 				<li><a href="#">Galt Herald</a></li>
-				<li><a href="#">Gridley Herald</a></li>
+				<li><a href="#">A Story About Gridley Herald</a></li>
 				<li><a href="#">Grunion Gazette</a></li>
 				<li><a href="#">Holtville Tribune</a></li>
 				<li><a href="#">Humboldt Beacon</a></li>
@@ -78,7 +80,7 @@
 				<li><a href="#">Kern Valley Sun</a></li>
 				<li><a href="#">King City Rustler</a></li>
 				<li><a href="#">Kingsburg Recorder</a></li>
-				<li><a href="#">L.A. Weekly</a></li>
+				<li><a href="#">The Complete Works of L.A. Weekly</a></li>
 				<li><a href="#">Loomis News</a></li>
 				<li><a href="#">Los Banos Enterprise</a></li>
 				<li><a href="#">Los Gatos Observer</a></li>
@@ -86,20 +88,21 @@
 				<li><a href="#">Napa Valley Register</a></li>
 				<li><a href="#">North County Times</a></li>
 				<li><a href="#">Novato Advance</a></li>
-				<li><a href="#">Oakdale Leader</a></li>
+				<li><a href="#">A Story About Oakdale Leader</a></li>
 				<li><a href="#">Oroville Mercury-Register</a></li>
 				<li><a href="#">Pacific Sun</a></li>
 				<li><a href="#">Press Democrat</a></li>
 				<li><a href="#">Press Telegram</a></li>
 				<li><a href="#">Press Tribune</a></li>
 				<li><a href="#">Press-Enterprise</a></li>
-				<li><a href="#">Ramona Journal</a></li>
+				<li><a href="#">The Complete Works of Ramona Journal</a></li>
 				<li><a href="#">Ripon Record</a></li>
 				<li><a href="#">Riverside County Record News</a></li>
 				<li><a href="#">Rocklin &amp; Roseville Today</a></li>
 				<li><a href="#">Sacramento Bee</a></li>
 				<li><a href="#">Sonoma Valley Sun</a></li>
 				<li><a href="#">Studio City Sun</a></li>
+				<li><a href="#">ŞAVK Işık, aydınlık, gaz lambası</a></li>
 				<li><a href="#">Tehachapi News</a></li>
 				<li><a href="#">The Acorn</a></li>
 				<li><a href="#">The Adobe Press</a></li>
@@ -114,14 +117,14 @@
 				<li><a href="#">The Coast News</a></li>
 				<li><a href="#">The Daily Democrat</a></li>
 				<li><a href="#">The Daily Press</a></li>
-				<li><a href="#">The Delhi Express</a></li>
+				<li><a href="#">The Complete Works of The Delhi Express</a></li>
 				<li><a href="#">The Desert Trail</a></li>
 				<li><a href="#">The Dispatch</a></li>
 				<li><a href="#">The Escalon Times</a></li>
 				<li><a href="#">The Foothills Paper</a></li>
 				<li><a href="#">The Foothills Sun Gazette</a></li>
 				<li><a href="#">The Gilroy Dispatch</a></li>
-				<li><a href="#">The Inyo Register</a></li>
+				<li><a href="#">The Complete Works of The Inyo Register</a></li>
 				<li><a href="#">The Mid-County Post</a></li>
 				<li><a href="#">The Record</a></li>
 				<li><a href="#">The Reporter</a></li>
@@ -166,6 +169,7 @@
 $(function(){
 	$('#demoFive').listnav({
 		includeOther: true,
+		letters: ['_', 'a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'i', 'ı', 'j', 'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'q', 'r', 's', 'ş', 't', 'u', 'ü','v', 'w', 'x', 'y', 'z', '-'],
 		prefixes: ['a', 'The Complete Works of']
 	});
 	$('.demo a').click(function(e) {

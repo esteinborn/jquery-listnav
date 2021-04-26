@@ -1,7 +1,7 @@
 The MIT License (MIT)
 
 Copyright (c) 2009 iHwy, Inc.
-Copyright (c) 2017 Eric Steinborn
+Copyright (c) 2021 Eric Steinborn
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

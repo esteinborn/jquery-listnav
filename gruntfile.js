@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 			js: {
         options: {
           banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - ' +
-              '<%= grunt.template.today("yyyy-mm") %>\n' +
+              '<%= pkg.date %>\n' +
               'Copyright <%= pkg.author %> - ' +
               '<%= pkg.repository.url %> */\n'
         },
@@ -40,14 +40,6 @@ module.exports = function(grunt) {
       ]
 		},
 		watch: {
-			sass: {
-        files: [
-          '**/*.scss'
-        ],
-        tasks: [
-          'sass'
-        ]
-      },
       scripts: {
         options: {
           interrupt: true
@@ -62,27 +54,6 @@ module.exports = function(grunt) {
         ]
 			}
 		},
-    sass: {
-      listnav: {
-        options: {
-          outputStyle: 'expanded',
-          sourceMap: true
-        },
-        files: {
-          'css/listnav.css': 'scss/listnav.scss',
-          'demo/css/listnav.css': 'scss/listnav.scss'
-        }
-      },
-      demo: {
-        options: {
-          outputStyle: 'expanded',
-          sourceMap: true
-        },
-        files: {
-          'demo/css/demo.css': 'demo/scss/stylesheet.scss'
-        }
-      }
-    },
     copy: {
       demo: {
         files: {
@@ -98,7 +69,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', 'Development build', function(args) {
     grunt.task.run([
-      'sass',
       'jshint',
       'uglify',
       'copy',
@@ -108,7 +78,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 'Production build', function(args) {
     grunt.task.run([
-      'sass',
       'uglify',
       'copy'
     ]);

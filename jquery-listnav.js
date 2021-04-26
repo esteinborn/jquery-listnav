@@ -8,7 +8,7 @@
 *   http://www.opensource.org/licenses/mit-license.php
 *   http://www.gnu.org/licenses/gpl.html
 *
-* Version 3.0.0 (11/22/2017)
+* Version 3.1.0 (04/26/2021)
 * Author: Eric Steinborn
 * Compatibility: jQuery 2.0+
 *
@@ -16,7 +16,6 @@
 (function ($) {
   $.fn.listnav = function (options) {
     var opts = $.extend({}, $.fn.listnav.defaults, options),
-        letters = ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-'],
         firstClick = false,
         clickEventType = '';
 
@@ -121,11 +120,11 @@
             $('.all', $letters).addClass('ln-selected');
           } else {
             // All was not included, lets find the first letter with a count and show it
-            for ( var i = ((opts.includeNums) ? 0 : 1); i < letters.length; i++) {
-              if ( counts[letters[i]] > 0 ) {
+            for ( var i = ((opts.includeNums) ? 0 : 1); i < opts.letters.length; i++) {
+              if ( counts[opts.letters[i]] > 0 ) {
                 firstClick = true;
 
-                $('.' + letters[i], $letters).slice(0, 1).trigger('click');
+                $('.' + opts.letters[i], $letters).slice(0, 1).trigger('click');
 
                 break;
               }
@@ -144,7 +143,9 @@
           // we're going to grab the first anchor in the list
           // We can no longer guarantee that a specific letter will be present
           // since adding the "removeDisabled" option
+
         });
+
       }
 
       // adds a class to each LI that has text content inside of it (ie, inside an <a>, a <div>, nested DOM nodes, etc)
@@ -200,7 +201,8 @@
 
       // Add the appropriate letter class to the current element
       function addLetterClass(firstChar, $el, isPrefix) {
-        if ( /\W/.test(firstChar) ) {
+        // Changed /W/ to /wW/ to allow for non-engligh characters
+        if ( /\wW/.test(firstChar) ) {
           firstChar = '-'; // not A-Z, a-z or 0-9, so considered "other"
         }
 
@@ -222,9 +224,9 @@
       }
 
       function addDisabledClass() {
-        for ( var i = 0; i < letters.length; i++ ) {
-          if ( counts[letters[i]] === undefined ) {
-            $('.' + letters[i], $letters).addClass('ln-disabled');
+        for ( var i = 0; i < opts.letters.length; i++ ) {
+          if ( counts[opts.letters[i]] === undefined ) {
+            $('.' + opts.letters[i], $letters).addClass('ln-disabled');
           }
         }
       }
@@ -352,11 +354,11 @@
       //
       function createLettersHtml() {
         var html = [];
-        for (var i = 1; i < letters.length; i++) {
+        for (var i = 1; i < opts.letters.length; i++) {
           if (html.length === 0) {
             html.push('<a class="all" href="#">'+ opts.allText + '</a><a class="_" href="#">0-9</a>');
           }
-          html.push('<a class="' + letters[i] + '" href="#">' + ((letters[i] === '-') ? '...' : letters[i].toUpperCase()) + '</a>');
+          html.push('<a class="' + opts.letters[i] + '" href="#">' + ((opts.letters[i] === '-') ? '...' : opts.letters[i].toUpperCase()) + '</a>');
         }
         return '<div class="ln-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="ln-letter-count listNavHide">0</div>' : '');
         // Remove inline styles, replace with css class
@@ -367,21 +369,22 @@
   };
 
   $.fn.listnav.defaults = {
+    allText: 'All',
+    cookieName: null,
+    dontCount: '',
+    filterSelector: '',
+    flagDisabled: true,
+    includeAll: true,
+    includeNums: true,
+    includeOther: false,
     initHidden: false,
     initHiddenText: 'Tap a letter above to view matching items',
     initLetter: '',
-    includeAll: true,
-    allText: 'All',
-    includeOther: false,
-    includeNums: true,
-    flagDisabled: true,
-    removeDisabled: false,
+    letters: ['_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-'],
     noMatchText: 'No matching entries',
-    showCounts: true,
-    dontCount: '',
-    cookieName: null,
     onClick: null,
     prefixes: [],
-    filterSelector: ''
+    removeDisabled: false,
+    showCounts: true,
   };
 })(jQuery);
