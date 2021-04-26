@@ -1,7 +1,5 @@
-@charset "UTF-8";
-
 /*
-	STYLE SHEET FOR JQUERY LISTNAV PLUGIN V 3.0.0, 11/22/2017
+	STYLE SHEET FOR JQUERY LISTNAV PLUGIN V 3.1.0, 04/26/2021
 	For more information, visit http://esteinborn.github.com/jquery-listnav
 */
 
@@ -29,29 +27,28 @@
   display: block;
 }
 
-.ln-letters {
-  a {
-    border: 1px solid silver;
-    border-right: none;
-    display: block;
-    float: left;
-    font-size: .9em;
-    padding: 2px 6px;
-    text-decoration: none;
-  }
 
-  .ln-last {
-    border-right: 1px solid silver;
-  }
+.ln-letters a {
+  border: 1px solid silver;
+  border-right: none;
+  display: block;
+  float: left;
+  font-size: .9em;
+  padding: 2px 6px;
+  text-decoration: none;
+}
 
-  a:hover,
-  .ln-selected {
-    background-color: #eaeaea;
-  }
+.ln-letters .ln-last {
+  border-right: 1px solid silver;
+}
 
-  .ln-disabled {
-    color: #ccc;
-  }
+.ln-letters a:hover,
+.ln-letters .ln-selected {
+  background-color: #eaeaea;
+}
+
+.ln-letters .ln-disabled {
+  color: #ccc;
 }
 
 .ln-letter-count {
