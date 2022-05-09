@@ -48,7 +48,7 @@ The navigation defaults to being placed directly above your list element. You ca
     showCounts: true,      // Show the number of list items that match that letter above the mouse
 });</code></pre>
 
-# Showcase
+## Showcase
 
 The following websites are currently using ListNav to filter their lists:
 
